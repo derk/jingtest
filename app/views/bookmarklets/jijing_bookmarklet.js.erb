@@ -1,0 +1,202 @@
+<% # menu bookmarklet - user sees a dialog box allowing him to link current page to one of his bags
+   # TODO - cache this!
+
+  host = request.host_with_port	 # to allow for developer, staging, production, etc.
+-%>
+(function(){
+  // Ensure this script only runs once
+  if( window.jijing_dcbc8fb79c83fc38eb5d6740ebce5c0f4f89a12d847ffc81f502ba048872 ){
+    window.scrollTo(0,0);
+    return;
+  } else {
+    window.jijing_dcbc8fb79c83fc38eb5d6740ebce5c0f4f89a12d847ffc81f502ba048872 = true;
+  }
+
+  // addEventListener() and removeEventListener() written by Bret Taylor
+  // taken from http://ajaxcookbook.org/event-handling-memory-leaks/
+  var addEventListener = function(instance, eventName, listener) {
+    var listenerFn = listener;
+    if (instance.addEventListener) {
+      instance.addEventListener(eventName, listenerFn, false);
+    } else if (instance.attachEvent) {
+      listenerFn = function() {
+        listener(window.event);
+      }
+      instance.attachEvent("on" + eventName, listenerFn);
+    } else {
+      throw new Error("Event registration not supported");
+    }
+    return {
+      instance: instance,
+      name: eventName,
+      listener: listenerFn
+    };
+  }
+
+  var removeEventListener = function(event) {
+    var instance = event.instance;
+    if (instance.removeEventListener) {
+      instance.removeEventListener(event.name, event.listener, false);
+    } else if (instance.detachEvent) {
+      instance.detachEvent("on" + event.name, event.listener);
+    }
+  }
+
+  var getMetaDescription = function(){
+    var descr = /description/i;
+    var metas = document.getElementsByTagName("meta");
+    for( var i=0; i < metas.length; i++ ){
+      if( descr.test( metas[i].name )){
+        return metas[i].content;
+      }
+    }
+    return "";
+  }
+
+  // Simple truncate. If 'str' is greater than 'maxLength', the trailing chars are removed.
+  // Doesn't add "..."
+  var truncate = function(str, maxLength){
+    result = str;
+    if( str.length > maxLength ){
+      result = str.substring(0, maxLength-1);
+    }
+    return result;
+  }
+
+  // Make flash objects on the page better behaved by setting 'wmode' to 'transparent'
+  var adjustFlashWmode = function(){
+    // Grabbed this IE detection from Prototype 1.6.0.3
+    var isIE = !!(window.attachEvent && navigator.userAgent.indexOf('Opera') === -1);
+
+    if( isIE ){
+      // Find <object> elements, and add <param>
+      var objs = document.getElementsByTagName("object");
+      for( var i=0; i < objs.length; i++ ){
+        // TODO - check if correct <param> already exists
+        p = document.createElement("param");
+        p.name = "wmode";
+        p.value = "transparent";
+        objs[i].appendChild( p );
+
+        objs[i].style.display = "none";
+        objs[i].style.display = "";
+      }
+    }
+
+    else {
+      // Find <embed> elements and add wmode attribute
+      var embeds = document.getElementsByTagName("embed");
+      for( var i=0; i < embeds.length; i++ ){
+        var elem = embeds[i];
+        elem.style.display = "none";
+        elem.setAttribute("wmode", "transparent");
+      }
+
+      // Force the flash to redisplay itself so it uses the new wmode.
+      // Its strange but sometimes it only works with a timer.
+      window.setTimeout( function(){
+        var embeds = document.getElementsByTagName("embed");
+        for( var i=0; i < embeds.length; i++ ){
+          embeds[i].style.display = "";
+        }
+      }, 1 );
+    }
+  }
+
+  var hideAllFlash = function(){
+    // Find <object> elements
+    var objs = document.getElementsByTagName("object");
+    for( var i=0; i < objs.length; i++ ){
+      objs[i].style.display = "none";
+    }
+
+    // Find <embed> elements and add wmode attribute
+    var embeds = document.getElementsByTagName("embed");
+    for( var i=0; i < embeds.length; i++ ){
+      var elem = embeds[i];
+      elem.style.display = "none";
+    }
+  }
+
+  var showAllFlash = function(){
+    // Find <object> elements
+    var objs = document.getElementsByTagName("object");
+    for( var i=0; i < objs.length; i++ ){
+      objs[i].style.display = "";
+    }
+
+    // Find <embed> elements and add wmode attribute
+    var embeds = document.getElementsByTagName("embed");
+    for( var i=0; i < embeds.length; i++ ){
+      var elem = embeds[i];
+      elem.style.display = "";
+    }
+  }
+
+  // Examine the "type" of page user is on to figure out which bookmarklet page and params to use
+  var getIframeSrc = function(){
+    var url_parameters =  '?link_url='    + encodeURIComponent( location.href ) +
+                          '&page_title=' + encodeURIComponent( truncate( document.title, 120 )) +
+                          '&page_descr=' + encodeURIComponent( truncate( getMetaDescription(), 1000 ));
+    return "http://<%= host %>/bookmarklets/new_post" + url_parameters;
+  }
+
+  var body = document.getElementsByTagName("body")[0];
+
+  var framediv = document.createElement("div");
+  framediv.style.position = "absolute";
+  framediv.style.zIndex = "2147483647";
+  framediv.style.top = "0";
+  framediv.style.right = "0";
+  framediv.style.width = "426px";
+  framediv.style.height = "490px";
+  framediv.style.margin = "0";
+  framediv.style.padding = "0";
+  framediv.style.borderLeft = "6px solid #0097c9";
+  framediv.style.borderBottom = "6px solid #0097c9";
+  framediv.style.background = "#fff";
+  framediv.style.overflow = "hidden";
+
+  var iframe = document.createElement("iframe");
+  iframe.setAttribute('frameborder', '0', 0);
+  iframe.src = getIframeSrc();
+  iframe.style.width = "426px";
+  iframe.style.height = "490px";
+  iframe.style.margin = "0";
+  iframe.style.padding = "0";
+  iframe.style.background = "none";
+  iframe.style.overflow = "hidden";
+
+  var close = document.createElement("a");
+  close.innerHTML = '<img src="<%= full_image_url 'x_white.gif' %>" style="width: 19px;height: 19px;margin: 0;padding: 0;vertical-align: top;border: 0;background: transparent;" />';
+  close.style.position = "absolute";
+  close.style.top = "0";
+  close.style.right = "0";
+  close.style.border = "0";
+  close.style.margin = "0";
+  close.style.padding = "0";
+  close.style.color = "#090";
+  close.style.font = "12px arial";
+  close.style.background = "none";
+  close.style.cursor = "pointer";
+  close.style.textDecoration = "none";
+  addEventListener( close, "click", function() {
+    body.removeChild(framediv);
+    window.jijing_dcbc8fb79c83fc38eb5d6740ebce5c0f4f89a12d847ffc81f502ba048872 = null;
+    showAllFlash();
+  });
+
+  var close_img = document.createElement("img");
+  close_img.src = '<%= full_image_url 'x_white.gif' %>';
+  close.appendChild( close_img );
+
+
+  framediv.appendChild( close );
+  framediv.appendChild( iframe );
+
+  body.appendChild( framediv );
+  window.scrollTo(0,0);
+
+  //adjustFlashWmode();
+  hideAllFlash();
+})();

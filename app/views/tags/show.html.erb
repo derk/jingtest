@@ -1,0 +1,6 @@
+
+<% @posts.each do |post| -%>
+<p><%= raw recognize_stamps_as_links(h(post.content)) %><p>
+<% end -%>
+
+
