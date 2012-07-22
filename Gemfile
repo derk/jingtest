@@ -1,6 +1,7 @@
 source 'https://rubygems.org'
-
+#ruby "1.9.3"
 gem 'rails', '3.2.6'
+
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
@@ -32,10 +33,8 @@ platforms :mri_18, :mingw_18 do
   end
 end
 
-group :development do
-  gem "thin"
-  gem "yard"
-end
+gem "thin"
+gem "yard"
 
 gem "devise"
 gem "acts_as_follower"
