@@ -45,6 +45,7 @@ gem "devise"
 gem "acts_as_follower"
 gem "acts-as-taggable-on", "~> 2.3.1"
 gem 'will_paginate', '~> 3.0'
+gem "heroku"
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
