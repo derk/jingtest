@@ -1,7 +1,7 @@
 class BookmarkletsController < ApplicationController
   before_filter :setup
-  before_filter :require_no_user, :only => [:login, :do_login]
-  before_filter :require_user,    :except => [:jijing_bookmarklet, :login, :do_login]
+  before_filter :require_no_authentication, :only => [:login, :do_login]
+  before_filter :authenticate_user!, :except => [:jijing_bookmarklet, :login, :do_login]
   skip_before_filter :verify_authenticity_token
 
   def jijing_bookmarklet

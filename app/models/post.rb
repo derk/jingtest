@@ -14,6 +14,7 @@ class Post < ActiveRecord::Base
   validate :create_shadow_if_needed, :on => :create, :unless => Proc.new { |post| post.shadow.present? }
   
   after_save :create_tags
+  after_destroy :delete_tags
 
   def increment_view_count
     begin
@@ -63,6 +64,6 @@ protected
     end
     
     def delete_tags
-      Tagging.delete_by_user_id_and_post_id(self.user_id, self.post_id)
+      Tagging.delete_by_user_id_and_post_id(self.user_id, self.id)
     end
 end

@@ -10845,3 +10845,411 @@ Served asset /sessions.js - 304 Not Modified (2ms)
 
 Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2012-07-23 00:43:22 +0800
 Served asset /application.js - 304 Not Modified (38ms)
+Connecting to database specified by database.yml
+DEPRECATION WARNING: Passing a block to devise_for is deprecated. Please remove the block from devise_for (only the block, the call to devise_for must still exist) and call devise_scope :user do ... end with the block instead. (called from block in <top (required)> at /myapp/jijing/config/routes.rb:5)
+
+
+Started GET "/login" for 127.0.0.1 at 2012-07-23 21:23:40 +0800
+Processing by Devise::SessionsController#new as HTML
+  Rendered devise/shared/_links.erb (1.9ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (165.1ms)
+Completed 200 OK in 1246ms (Views: 620.5ms | ActiveRecord: 571.5ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2012-07-23 21:23:41 +0800
+Served asset /application.css - 304 Not Modified (2ms)
+
+
+Started GET "/assets/sessions.css?body=1" for 127.0.0.1 at 2012-07-23 21:23:41 +0800
+Served asset /sessions.css - 304 Not Modified (9ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2012-07-23 21:23:41 +0800
+Served asset /jquery.js - 304 Not Modified (10ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2012-07-23 21:23:41 +0800
+Served asset /jquery_ujs.js - 304 Not Modified (2ms)
+
+
+Started GET "/assets/sessions.js?body=1" for 127.0.0.1 at 2012-07-23 21:23:41 +0800
+Served asset /sessions.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2012-07-23 21:23:42 +0800
+Served asset /application.js - 304 Not Modified (15ms)
+
+
+Started POST "/login" for 127.0.0.1 at 2012-07-23 21:23:45 +0800
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"cdff7gcfQGlaqHsrowkztDYQMVq/obN6QYp7V5UyNuk=", "user"=>{"email"=>"derk@bagtheweb.com", "password"=>"[FILTERED]", "remember_me"=>"1"}, "commit"=>"Sign in"}
+  [1m[36mUser Load (61.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."email" = 'derk@bagtheweb.com' LIMIT 1[0m
+  [1m[35m (1.8ms)[0m  BEGIN
+  [1m[36m (11.6ms)[0m  [1mUPDATE "users" SET "remember_created_at" = '2012-07-23 13:23:45.607039', "updated_at" = '2012-07-23 13:23:45.625960' WHERE "users"."id" = 1[0m
+  [1m[35m (9.1ms)[0m  COMMIT
+  [1m[36m (0.6ms)[0m  [1mBEGIN[0m
+  [1m[35m (1.1ms)[0m  UPDATE "users" SET "current_sign_in_at" = '2012-07-23 13:23:45.753881', "sign_in_count" = 2, "updated_at" = '2012-07-23 13:23:45.756256' WHERE "users"."id" = 1
+  [1m[36m (2.3ms)[0m  [1mCOMMIT[0m
+Redirected to http://127.0.0.1:3000/
+Completed 302 Found in 798ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2012-07-23 21:23:45 +0800
+Processing by SiteController#index as HTML
+  [1m[35mUser Load (0.9ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  Rendered site/index.html.erb within layouts/application (5.0ms)
+Completed 200 OK in 25ms (Views: 23.0ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2012-07-23 21:23:46 +0800
+Served asset /application.css - 304 Not Modified (1ms)
+
+
+Started GET "/assets/sessions.css?body=1" for 127.0.0.1 at 2012-07-23 21:23:46 +0800
+Served asset /sessions.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2012-07-23 21:23:46 +0800
+Served asset /jquery.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2012-07-23 21:23:46 +0800
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/sessions.js?body=1" for 127.0.0.1 at 2012-07-23 21:23:46 +0800
+Served asset /sessions.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2012-07-23 21:23:46 +0800
+Served asset /application.js - 304 Not Modified (1ms)
+
+
+Started GET "/posts" for 127.0.0.1 at 2012-07-23 21:23:48 +0800
+Processing by PostsController#index as HTML
+  [1m[36mUser Load (2.1ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mPost Load (11.0ms)[0m  SELECT "posts".* FROM "posts" 
+  Rendered posts/index.html.erb within layouts/application (4.4ms)
+Completed 200 OK in 48ms (Views: 16.3ms | ActiveRecord: 18.2ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2012-07-23 21:23:48 +0800
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/sessions.css?body=1" for 127.0.0.1 at 2012-07-23 21:23:48 +0800
+Served asset /sessions.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2012-07-23 21:23:48 +0800
+Served asset /jquery.js - 304 Not Modified (2ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2012-07-23 21:23:48 +0800
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/sessions.js?body=1" for 127.0.0.1 at 2012-07-23 21:23:48 +0800
+Served asset /sessions.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2012-07-23 21:23:48 +0800
+Served asset /application.js - 304 Not Modified (2ms)
+
+
+Started DELETE "/posts/1" for 127.0.0.1 at 2012-07-23 21:23:54 +0800
+Processing by PostsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"cdff7gcfQGlaqHsrowkztDYQMVq/obN6QYp7V5UyNuk=", "id"=>"1"}
+  [1m[36mUser Load (3.3ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mPost Load (6.1ms)[0m  SELECT "posts".* FROM "posts" WHERE "posts"."user_id" = 1 AND "posts"."id" = $1 LIMIT 1  [["id", "1"]]
+  [1m[36m (0.6ms)[0m  [1mBEGIN[0m
+  [1m[35mCACHE (0.5ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  [1m[36mSQL (1.3ms)[0m  [1mUPDATE "users" SET "posts_count" = COALESCE("posts_count", 0) - 1 WHERE "users"."id" = 1[0m
+  [1m[35mShadow Load (38.4ms)[0m  SELECT "shadows".* FROM "shadows" WHERE "shadows"."post_id" = 1 LIMIT 1
+  [1m[36mSQL (4.8ms)[0m  [1mDELETE FROM "shadows" WHERE "shadows"."id" = $1[0m  [["id", 1]]
+  [1m[35mSQL (3.3ms)[0m  DELETE FROM "posts" WHERE "posts"."id" = $1  [["id", 1]]
+  [1m[36mSQL (3.5ms)[0m  [1mUPDATE "users" SET "updated_at" = '2012-07-23 13:23:55.196948' WHERE "users"."id" = 1[0m
+  [1m[35mTagging Load (3.9ms)[0m  DELETE FROM taggings WHERE user_id = 1 AND taggable_id != 1 AND taggable_type = 'Post'
+  [1m[36m (2.1ms)[0m  [1mCOMMIT[0m
+Redirected to http://127.0.0.1:3000/posts
+Completed 302 Found in 344ms (ActiveRecord: 92.6ms)
+
+
+Started GET "/posts" for 127.0.0.1 at 2012-07-23 21:23:55 +0800
+Processing by PostsController#index as HTML
+  [1m[35mUser Load (1.3ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  [1m[36mPost Load (0.8ms)[0m  [1mSELECT "posts".* FROM "posts" [0m
+  Rendered posts/index.html.erb within layouts/application (0.1ms)
+Completed 200 OK in 15ms (Views: 11.0ms | ActiveRecord: 2.1ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2012-07-23 21:23:55 +0800
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/sessions.css?body=1" for 127.0.0.1 at 2012-07-23 21:23:55 +0800
+Served asset /sessions.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2012-07-23 21:23:55 +0800
+Served asset /jquery.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2012-07-23 21:23:55 +0800
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/sessions.js?body=1" for 127.0.0.1 at 2012-07-23 21:23:55 +0800
+Served asset /sessions.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2012-07-23 21:23:55 +0800
+Served asset /application.js - 304 Not Modified (34ms)
+
+
+Started GET "/bookmarklets/jijing_bookmarklet?v=1" for 127.0.0.1 at 2012-07-23 21:24:12 +0800
+Processing by BookmarkletsController#jijing_bookmarklet as */*
+  Parameters: {"v"=>"1"}
+  Rendered bookmarklets/jijing_bookmarklet.js.erb (6.2ms)
+Completed 200 OK in 54ms (Views: 53.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "//assets/x_white.gif" for 127.0.0.1 at 2012-07-23 21:24:12 +0800
+Served asset /x_white.gif - 404 Not Found (15ms)
+
+ActionController::RoutingError (No route matches [GET] "/assets/x_white.gif"):
+  actionpack (3.2.6) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (3.2.6) lib/action_dispatch/middleware/show_exceptions.rb:56:in `call'
+  railties (3.2.6) lib/rails/rack/logger.rb:26:in `call_app'
+  railties (3.2.6) lib/rails/rack/logger.rb:16:in `call'
+  actionpack (3.2.6) lib/action_dispatch/middleware/request_id.rb:22:in `call'
+  rack (1.4.1) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.4.1) lib/rack/runtime.rb:17:in `call'
+  activesupport (3.2.6) lib/active_support/cache/strategy/local_cache.rb:72:in `call'
+  rack (1.4.1) lib/rack/lock.rb:15:in `call'
+  actionpack (3.2.6) lib/action_dispatch/middleware/static.rb:62:in `call'
+  railties (3.2.6) lib/rails/engine.rb:479:in `call'
+  railties (3.2.6) lib/rails/application.rb:220:in `call'
+  rack (1.4.1) lib/rack/content_length.rb:14:in `call'
+  railties (3.2.6) lib/rails/rack/log_tailer.rb:17:in `call'
+  thin (1.4.1) lib/thin/connection.rb:80:in `block in pre_process'
+  thin (1.4.1) lib/thin/connection.rb:78:in `catch'
+  thin (1.4.1) lib/thin/connection.rb:78:in `pre_process'
+  thin (1.4.1) lib/thin/connection.rb:53:in `process'
+  thin (1.4.1) lib/thin/connection.rb:38:in `receive_data'
+  eventmachine (0.12.10) lib/eventmachine.rb:256:in `run_machine'
+  eventmachine (0.12.10) lib/eventmachine.rb:256:in `run'
+  thin (1.4.1) lib/thin/backends/base.rb:63:in `start'
+  thin (1.4.1) lib/thin/server.rb:159:in `start'
+  rack (1.4.1) lib/rack/handler/thin.rb:13:in `run'
+  rack (1.4.1) lib/rack/server.rb:265:in `start'
+  railties (3.2.6) lib/rails/commands/server.rb:70:in `start'
+  railties (3.2.6) lib/rails/commands.rb:55:in `block in <top (required)>'
+  railties (3.2.6) lib/rails/commands.rb:50:in `tap'
+  railties (3.2.6) lib/rails/commands.rb:50:in `<top (required)>'
+  script/rails:6:in `require'
+  script/rails:6:in `<main>'
+
+
+  Rendered /usr/local/rvm/gems/ruby-1.9.3-p194/gems/actionpack-3.2.6/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.7ms)
+
+
+Started GET "/bookmarklets/new_post?link_url=http%3A%2F%2Fwww.itpub.net%2Fforum-6-2.html&page_title=%E6%B5%B7%E9%98%94%E5%A4%A9%E7%A9%BA%20-%20%E7%AC%AC2%E9%A1%B5-ITPUB%E8%AE%BA%E5%9D%9B-it168%E6%97%97%E4%B8%8B%E4%B8%93%E4%B8%9A%E6%8A%80%E6%9C%AF%E7%A4%BE%E5%8C%BA&page_descr=%E7%95%85%E8%B0%88IT%E4%BA%BA%E7%94%9F%EF%BC%8C%E7%BB%93%E8%AF%86%E7%9F%A5%E5%BF%83%E6%9C%8B%E5%8F%8B%20%2CITPUB%E8%AE%BA%E5%9D%9B" for 127.0.0.1 at 2012-07-23 21:24:12 +0800
+Processing by BookmarkletsController#new_post as HTML
+  Parameters: {"link_url"=>"http://www.itpub.net/forum-6-2.html", "page_title"=>"海阔天空 - 第2页-ITPUB论坛-it168旗下专业技术社区", "page_descr"=>"畅谈IT人生，结识知心朋友 ,ITPUB论坛"}
+  [1m[35mUser Load (3.3ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  Rendered bookmarklets/new_post.html.erb within layouts/application (8.4ms)
+Completed 200 OK in 39ms (Views: 33.0ms | ActiveRecord: 3.3ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2012-07-23 21:24:12 +0800
+Served asset /application.css - 304 Not Modified (4ms)
+
+
+Started GET "/assets/sessions.css?body=1" for 127.0.0.1 at 2012-07-23 21:24:12 +0800
+Served asset /sessions.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2012-07-23 21:24:12 +0800
+Served asset /jquery.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2012-07-23 21:24:12 +0800
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/sessions.js?body=1" for 127.0.0.1 at 2012-07-23 21:24:12 +0800
+Served asset /sessions.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2012-07-23 21:24:12 +0800
+Served asset /application.js - 304 Not Modified (3ms)
+
+
+Started POST "/posts" for 127.0.0.1 at 2012-07-23 21:24:23 +0800
+Processing by PostsController#create as JS
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"cdff7gcfQGlaqHsrowkztDYQMVq/obN6QYp7V5UyNuk=", "post"=>{"link_url"=>"http://www.itpub.net/forum-6-2.html", "content"=>"test #cook"}, "commit"=>"Create Post"}
+  [1m[36mUser Load (2.6ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35m (0.5ms)[0m  BEGIN
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mShadow Load (55.8ms)[0m  SELECT "shadows".* FROM "shadows" WHERE "shadows"."web_url" = 'http://www.itpub.net/forum-6-2.html' LIMIT 1
+  [1m[36mShadow Exists (1.8ms)[0m  [1mSELECT 1 AS one FROM "shadows" WHERE "shadows"."web_url" = 'http://www.itpub.net/forum-6-2.html' LIMIT 1[0m
+  [1m[35mSQL (60.4ms)[0m  INSERT INTO "shadows" ("created_at", "description", "post_id", "title", "web_url") VALUES ($1, $2, $3, $4, $5) RETURNING "id"  [["created_at", Mon, 23 Jul 2012 13:24:23 UTC +00:00], ["description", ""], ["post_id", nil], ["title", ""], ["web_url", "http://www.itpub.net/forum-6-2.html"]]
+  [1m[36mSQL (36.9ms)[0m  [1mINSERT INTO "posts" ("content", "created_at", "parent_id", "shadow_id", "updated_at", "user_id", "view_count") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["content", "test #cook"], ["created_at", Mon, 23 Jul 2012 13:24:23 UTC +00:00], ["parent_id", nil], ["shadow_id", 2], ["updated_at", Mon, 23 Jul 2012 13:24:23 UTC +00:00], ["user_id", 1], ["view_count", 0]]
+  [1m[35mSQL (0.8ms)[0m  UPDATE "users" SET "posts_count" = COALESCE("posts_count", 0) + 1 WHERE "users"."id" = 1
+  [1m[36m (0.9ms)[0m  [1mUPDATE "shadows" SET "post_id" = 2 WHERE "shadows"."id" = 2[0m
+  [1m[35mSQL (0.9ms)[0m  UPDATE "users" SET "updated_at" = '2012-07-23 13:24:23.854805' WHERE "users"."id" = 1
+  [1m[36mTag Load (30.3ms)[0m  [1mSELECT "tags".* FROM "tags" WHERE (LOWER(name) LIKE 'cook') LIMIT 1[0m
+  [1m[35mTag Exists (1.0ms)[0m  SELECT 1 AS one FROM "tags" WHERE LOWER("tags"."name") = LOWER('cook') LIMIT 1
+  [1m[36mSQL (32.9ms)[0m  [1mINSERT INTO "tags" ("name") VALUES ($1) RETURNING "id"[0m  [["name", "cook"]]
+  [1m[35mShadow Exists (1.1ms)[0m  SELECT 1 AS one FROM "shadows" WHERE ("shadows"."web_url" = 'http://www.itpub.net/forum-6-2.html' AND "shadows"."id" != 2) LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT 1 AS one FROM "shadows" WHERE ("shadows"."web_url" = 'http://www.itpub.net/forum-6-2.html' AND "shadows"."id" != 2) LIMIT 1[0m
+  [1m[35mTag Load (0.8ms)[0m  SELECT "tags".* FROM "tags" WHERE "tags"."id" = 2 LIMIT 1
+  [1m[36mTag Exists (0.7ms)[0m  [1mSELECT 1 AS one FROM "tags" WHERE (LOWER("tags"."name") = LOWER('cook') AND "tags"."id" != 2) LIMIT 1[0m
+  [1m[35mTagging Exists (17.0ms)[0m  SELECT 1 AS one FROM "taggings" WHERE ("taggings"."tag_id" = 2 AND "taggings"."taggable_id" = 2 AND "taggings"."taggable_type" = 'Post' AND "taggings"."user_id" = 1) LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT 1 AS one FROM "shadows" WHERE ("shadows"."web_url" = 'http://www.itpub.net/forum-6-2.html' AND "shadows"."id" != 2) LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT 1 AS one FROM "shadows" WHERE ("shadows"."web_url" = 'http://www.itpub.net/forum-6-2.html' AND "shadows"."id" != 2) LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT 1 AS one FROM "tags" WHERE (LOWER("tags"."name") = LOWER('cook') AND "tags"."id" != 2) LIMIT 1[0m
+  [1m[35mCACHE (0.4ms)[0m  SELECT 1 AS one FROM "taggings" WHERE ("taggings"."tag_id" = 2 AND "taggings"."taggable_id" = 2 AND "taggings"."taggable_type" = 'Post' AND "taggings"."user_id" = 1) LIMIT 1
+  [1m[36mSQL (43.0ms)[0m  [1mINSERT INTO "taggings" ("created_at", "tag_id", "taggable_id", "taggable_type", "user_id") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["created_at", Mon, 23 Jul 2012 13:24:24 UTC +00:00], ["tag_id", 2], ["taggable_id", 2], ["taggable_type", "Post"], ["user_id", 1]]
+  [1m[35mTagging Load (0.9ms)[0m  DELETE FROM taggings WHERE user_id = 1 AND tag_id NOT IN (2) AND taggable_type = 'Post'
+  [1m[36m (3.4ms)[0m  [1mCOMMIT[0m
+Redirected to http://127.0.0.1:3000/posts/2
+Completed 302 Found in 521ms (ActiveRecord: 301.1ms)
+
+
+Started GET "/posts/2" for 127.0.0.1 at 2012-07-23 21:24:24 +0800
+Processing by PostsController#show as JS
+  Parameters: {"id"=>"2"}
+  [1m[35mUser Load (2.1ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  [1m[36mPost Load (1.8ms)[0m  [1mSELECT "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT 1[0m  [["id", "2"]]
+  Rendered posts/show.html.erb within layouts/application (1.5ms)
+Completed 200 OK in 19ms (Views: 10.3ms | ActiveRecord: 3.9ms)
+
+
+Started GET "/posts" for 127.0.0.1 at 2012-07-23 21:24:29 +0800
+Processing by PostsController#index as HTML
+  [1m[35mUser Load (1.1ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  [1m[36mPost Load (0.7ms)[0m  [1mSELECT "posts".* FROM "posts" [0m
+  Rendered posts/index.html.erb within layouts/application (1.7ms)
+Completed 200 OK in 19ms (Views: 14.4ms | ActiveRecord: 1.8ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2012-07-23 21:24:29 +0800
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/sessions.css?body=1" for 127.0.0.1 at 2012-07-23 21:24:29 +0800
+Served asset /sessions.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2012-07-23 21:24:29 +0800
+Served asset /jquery.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2012-07-23 21:24:29 +0800
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/sessions.js?body=1" for 127.0.0.1 at 2012-07-23 21:24:29 +0800
+Served asset /sessions.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2012-07-23 21:24:29 +0800
+Served asset /application.js - 304 Not Modified (3ms)
+
+
+Started GET "/posts/2" for 127.0.0.1 at 2012-07-23 21:24:34 +0800
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[35mUser Load (1.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  [1m[36mPost Load (0.7ms)[0m  [1mSELECT "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT 1[0m  [["id", "2"]]
+  Rendered posts/show.html.erb within layouts/application (2.4ms)
+Completed 200 OK in 41ms (Views: 36.6ms | ActiveRecord: 1.7ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2012-07-23 21:24:34 +0800
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/sessions.css?body=1" for 127.0.0.1 at 2012-07-23 21:24:34 +0800
+Served asset /sessions.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2012-07-23 21:24:34 +0800
+Served asset /jquery.js - 304 Not Modified (3ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2012-07-23 21:24:34 +0800
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/sessions.js?body=1" for 127.0.0.1 at 2012-07-23 21:24:34 +0800
+Served asset /sessions.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2012-07-23 21:24:34 +0800
+Served asset /application.js - 304 Not Modified (1ms)
+
+
+Started GET "/posts" for 127.0.0.1 at 2012-07-23 21:24:37 +0800
+Processing by PostsController#index as HTML
+  [1m[35mUser Load (9.1ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  [1m[36mPost Load (1.1ms)[0m  [1mSELECT "posts".* FROM "posts" [0m
+  Rendered posts/index.html.erb within layouts/application (3.1ms)
+Completed 200 OK in 52ms (Views: 36.4ms | ActiveRecord: 10.2ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2012-07-23 21:24:37 +0800
+Served asset /application.css - 304 Not Modified (4ms)
+
+
+Started GET "/assets/sessions.css?body=1" for 127.0.0.1 at 2012-07-23 21:24:37 +0800
+Served asset /sessions.css - 304 Not Modified (9ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2012-07-23 21:24:37 +0800
+Served asset /jquery.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2012-07-23 21:24:37 +0800
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/sessions.js?body=1" for 127.0.0.1 at 2012-07-23 21:24:37 +0800
+Served asset /sessions.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2012-07-23 21:24:37 +0800
+Served asset /application.js - 304 Not Modified (5ms)
+
+
+Started GET "/" for 127.0.0.1 at 2012-07-23 21:24:42 +0800
+Processing by SiteController#index as HTML
+  [1m[35mUser Load (4.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  Rendered site/index.html.erb within layouts/application (13.6ms)
+Completed 200 OK in 42ms (Views: 38.1ms | ActiveRecord: 4.0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2012-07-23 21:24:42 +0800
+Served asset /application.css - 304 Not Modified (2ms)
+
+
+Started GET "/assets/sessions.css?body=1" for 127.0.0.1 at 2012-07-23 21:24:42 +0800
+Served asset /sessions.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2012-07-23 21:24:42 +0800
+Served asset /jquery.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2012-07-23 21:24:42 +0800
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/sessions.js?body=1" for 127.0.0.1 at 2012-07-23 21:24:42 +0800
+Served asset /sessions.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2012-07-23 21:24:42 +0800
+Served asset /application.js - 304 Not Modified (2ms)
