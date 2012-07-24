@@ -16,6 +16,7 @@ class PostsController < ApplicationController
   # GET /posts/1.json
   def show
     @post = Post.find(params[:id])
+    @children = @post.children
 
     respond_to do |format|
       format.html # show.html.erb
@@ -43,10 +44,11 @@ class PostsController < ApplicationController
   # POST /posts.json
   def create
     @post = current_user.posts.build(params[:post])
+    @parent_post = Post.find(params[:post][:parent_id]) if params[:post][:parent_id]
 
     respond_to do |format|
       if @post.save
-        format.html { redirect_to @post, notice: 'Post was successfully created.' }
+        format.html { redirect_to @parent_post || @post, notice: 'Post was successfully created.' }
         format.json { render json: @post, status: :created, location: @post }
         format.js do
           render(:update) do |page|

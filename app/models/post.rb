@@ -3,8 +3,10 @@ class Post < ActiveRecord::Base
 
   belongs_to :user, :counter_cache => true, :touch => true
   has_one :shadow, :dependent => :destroy, :autosave => true
+  belongs_to :parent, :class_name => "Post", :foreign_key => :parent_id
+  has_many :children, :class_name => "Post", :foreign_key => :parent_id
   
-  attr_accessible :content, :link_url
+  attr_accessible :content, :link_url, :parent_id
   # link_url can be set when shadow (child) does not yet exist
   attr_accessor :link_url
   validates :content, :length => {:in => 3..4096}, :presence => true
@@ -15,6 +17,8 @@ class Post < ActiveRecord::Base
   
   after_save :create_tags
   after_destroy :delete_tags
+
+  scope :children, :condtions
 
   def increment_view_count
     begin

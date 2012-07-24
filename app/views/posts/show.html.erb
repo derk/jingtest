@@ -4,8 +4,45 @@
 <%= link_to 'Edit', edit_post_path(@post) %> |
 <%= link_to 'Back', posts_path %>
 
+
 <p>original webpage:<p>
 <p><%= link_to @post.shadow.web_url, @post.shadow.web_url, :target => "_blank" %><p>
+
+
+<p>comments:<p>
+
+<% @children.each do |post| %>
+  <p>
+    <%= @post.user.email %>
+    <%= standard_date_text(@post.created_at) %>
+    <br />
+    <%= link_to (raw truncate(recognize_stamps_as_links(h(post.content.force_encoding('utf-8'))), :length => 200)), post %>
+  </p>
+<% end %>
+
+<%= form_for(Post.new) do |f| %>
+  <% if @post.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@post.errors.count, "error") %> prohibited this post from being saved:</h2>
+
+      <ul>
+      <% @post.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <%= f.hidden_field :link_url, {:value => post_url(@post)} %>
+  <%= f.hidden_field :parent_id, {:value => @post.id} %>
+  <div class="contents">
+    <%= f.text_area :content, :size => "50x5" %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
+
 
 <div class="sidebar">
   <%= render "share/sidebar" %>
