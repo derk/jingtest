@@ -1,6 +1,12 @@
-<p id="notice"><%= notice %></p>
-
+<%= standard_date_text(@post.created_at) %>
 <p><%= simple_format(raw(recognize_stamps_as_links(h(@post.content))), {}, :sanitize => false) %><p>
 
 <%= link_to 'Edit', edit_post_path(@post) %> |
 <%= link_to 'Back', posts_path %>
+
+<p>original webpage:<p>
+<p><%= link_to @post.shadow.web_url, @post.shadow.web_url, :target => "_blank" %><p>
+
+<div class="sidebar">
+  <%= render "share/sidebar" %>
+</div>

@@ -3,6 +3,10 @@ module ApplicationHelper
     home_url + image_path(*args)
   end
 
+  def standard_date_text( datetime )
+    datetime.strftime("%d/%m/%Y")
+  end
+
   #mark_required(@user, :email)
   def mark_required(object, attribute)
     "*" if object.class.validators_on(attribute).map(&:class).include? ActiveModel::Validations::PresenceValidator
