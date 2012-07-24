@@ -48,9 +48,19 @@ class PostsController < ApplicationController
       if @post.save
         format.html { redirect_to @post, notice: 'Post was successfully created.' }
         format.json { render json: @post, status: :created, location: @post }
+        format.js do
+          render(:update) do |page|
+            page.replace_html :post_form, :partial => 'bookmarklets/show', :locals => {:post => @post}
+          end
+        end
       else
         format.html { render action: "new" }
         format.json { render json: @post.errors, status: :unprocessable_entity }
+        format.js do
+          render(:update) do |page|
+            #show @post.errors
+          end
+        end
       end
     end
   end

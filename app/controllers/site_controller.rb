@@ -3,6 +3,7 @@ class SiteController < ApplicationController
   end
 
   def explore
+    @posts = Post.all
   end
 
   def about

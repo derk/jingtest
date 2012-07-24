@@ -1,2 +1,13 @@
 <h1>Site#explore</h1>
-<p>Find me in app/views/site/explore.html.erb</p>
+
+<ul>
+<% @posts.group_by{ |s| s.created_at.strftime("%Y/%m/%d") }.each do |date, posts_by_date| -%>
+  <p><%= date %></p>
+  <% posts_by_date.each do |post| -%>
+    <li>
+      <%= link_to (raw truncate(recognize_stamps_as_links(h(post.content.force_encoding('utf-8'))), :length => 200)), post %>
+      <%= time_ago_in_words(post.created_at) %> ago
+    </li>
+  <% end -%>
+<% end -%>
+</ul>
