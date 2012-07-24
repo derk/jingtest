@@ -1,14 +1,3 @@
 <h1>Site#index</h1>
-  <%= link_to "home", home_url %>
-  
-  <%= link_to "explore", explore_url %>
-  <%= link_to "posts", posts_url %>
-  <%= link_to "tools", tools_url %>
-  <% if user_signed_in? -%>
-    <%= link_to "logout", logout_url %>
-    <%#= link_to "logout", logout_url %>
-  <% else -%>
-    <%= link_to "signup", signup_url %>
-    <%= link_to "login", login_url %>
-  <% end -%>
+
 <p>welcome to jijing.me!</p>
