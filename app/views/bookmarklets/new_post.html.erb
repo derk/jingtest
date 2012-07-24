@@ -1,4 +1,5 @@
-<h1>Bookmarklets#new_post</h1>
+<div id="bookmarklet_post_form">
+<h1>Bookmarklets</h1>
 
 <%= form_for(@post, :remote=>true) do |f| %>
   <% if @post.errors.any? %>
@@ -22,3 +23,4 @@
     <%= f.submit %>
   </div>
 <% end %>
+</div>

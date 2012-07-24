@@ -9,7 +9,7 @@
 <p><%= link_to @post.shadow.web_url, @post.shadow.web_url, :target => "_blank" %><p>
 
 
-<p>comments:<p>
+<p>comments(<%= @children.size %>):<p>
 
 <% @children.each do |post| %>
   <p>
