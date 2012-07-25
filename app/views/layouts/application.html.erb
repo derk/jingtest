@@ -10,10 +10,12 @@
 <div class="wrap">
   <%= render "share/top" -%>
 
-  <p class="notice"><%= notice %></p>
-  <p class="alert"><%= alert %></p>
-
-  <%= yield %>
+  <div class="content">
+    <p class="notice"><%= notice %></p>
+    <p class="alert"><%= alert %></p>
+    <%= yield %>
+    <br clear="all" />
+  </div>
 
   <%= render "share/bottom" -%>
 </div>
