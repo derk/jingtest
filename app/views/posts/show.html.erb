@@ -1,49 +1,111 @@
-<%= standard_date_text(@post.created_at) %>
-<p><%= simple_format(raw(recognize_stamps_as_links(h(@post.content))), {}, :sanitize => false) %><p>
-
-<%= link_to 'Edit', edit_post_path(@post) %> |
-<%= link_to 'Back', posts_path %>
-
-
-<p>original webpage:<p>
-<p><%= link_to @post.shadow.web_url, @post.shadow.web_url, :target => "_blank" %><p>
-
-
-<p>comments(<%= @children.size %>):<p>
-
-<% @children.each do |post| %>
-  <p>
-    <%= @post.user.email %>
-    <%= standard_date_text(@post.created_at) %>
-    <br />
-    <%= link_to (raw truncate(recognize_stamps_as_links(h(post.content.force_encoding('utf-8'))), :length => 200)), post %>
-  </p>
-<% end %>
-
-<%= form_for(Post.new) do |f| %>
-  <% if @post.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@post.errors.count, "error") %> prohibited this post from being saved:</h2>
-
-      <ul>
-      <% @post.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
+<div class="content">
+  <div class="main">
+    <div class="postEntry">
+      <div class="postInfo">
+        <div class="datetime"><%= standard_date_text(@post.created_at) %></div>
+        <div class="tools">
+          <%= link_to '编辑', edit_post_path(@post) %>
+          <span class="space">|</span>
+          <%= link_to '删除', delete_post_path(@post) %>
+        </div>
+      </div>
+      <div class="postDetail">
+        <h2><%= link_to @post.shadow.web_url, @post.shadow.web_url, :target => "_blank" %></h2>
+        <div class="postDesc">
+          <%= simple_format(raw(recognize_stamps_as_links(h(@post.content))), {}, :sanitize => false) %>
+        </div>
+      </div>
     </div>
-  <% end %>
-  <%= f.hidden_field :link_url, {:value => post_url(@post)} %>
-  <%= f.hidden_field :parent_id, {:value => @post.id} %>
-  <div class="contents">
-    <%= f.text_area :content, :size => "50x5" %>
+
+    <div class="mod postMod">
+      <div class="mod-title">灵感链接</div>
+      <div class="mod-detail mrginb42">
+        <h5><%= link_to '《维基经济学》（豆瓣）', "http://book.douban.com/subject/2265341/", :target=>"_bliank" %></h5>
+        <p>维基经济学的得名，缘于维基百科全书网站的巨大成功，他向世界证明：如果有一种方
+                    	法充分利用组织里每一个人的智慧，它的能量将无比惊人！维基经济学所揭示的四个新法则：
+                        开放、对等、共享以及全球运作，正在取代一些旧的商业心教条。</p>
+        <p><%= link_to '《http://book.douban.com/subject/2265341/', "http://book.douban.com/subject/2265341/", :class=>"web", :target=>"_bliank" %></p>
+      </div>
+
+      <div class="mod-title">留言（<%= @children.size %>)条）</div>
+      <div class="mod-detail messageInfo">
+        <div class="mod-user">
+          <div class="img">
+            <%=link_to image_tag("usericon10-42.png", :alt=>"麦夕林"), "#" %>                           
+          </div>
+          <div class="info">
+            <%=link_to "麦夕林", "#", :class=>"author" %> 
+            <span class="datetime">23/12/2012</span>
+          </div><br clear="all" />
+        </div>
+        <p>新网络也帮助把科学界转变为一个逐渐开放和协作的网络，特点如下： 最有技术和标准
+                    	的快速传播； 新技术的融合和重组的刺激； 最新的专业技术和有效的研究工具的可获
+                        得性； 更加快捷的产学研网络，使公共知识到私人企业的积极反馈更加迅速； 越来
+                        越多广泛和分散的研究和创新模式，包括科学知识、工具、网络的更加开放。</p>
+      </div>
+
+      <div class="mod-detail messageInfo">
+        <div class="mod-user">
+          <div class="img">
+            <%=link_to image_tag("usericon7-42.png", :alt=>"黄安迪"), "#" %>                           
+          </div>
+          <div class="info">
+            <%=link_to "黄安迪", "#", :class=>"author" %> 
+            <span class="datetime">
+              <%= standard_date_text(@post.created_at) %>
+            </span>
+          </div><br clear="all" />
+        </div>
+        <p>我们对开放式平台这种商业模型的讨论可以归纳为以下三点：第一、所有最新
+                    	科技的应用都讲经历一段早期的不景气，随后真正可行的商业模型才会出现；
+                        第二、极端的权力下放以及开放政策将建立一种真正可行的商业模式，这
+                        种成功接近正常的参数范围与奖励革新，并同时避免破坏那些促成创新系统
+                        的特征；第三、只有在全体股东确保为用户提供丰厚奖励的前提下，才能确
+                        保平台参与的可行性开放。 </p>
+      </div>
+
+      <% @children.each do |post| %>
+        <div class="mod-detail messageInfo">
+          <div class="mod-user">
+            <div class="img">
+              <%=link_to image_tag("usericon7-42.png", :alt=>"黄安迪"), "#" %>                           
+            </div>
+            <div class="info">
+              <%=link_to "黄安迪", "#", :class=>"author" %> 
+              <span class="datetime">23/12/2012</span>
+            </div><br clear="all" />
+          </div>
+          <p><%= link_to (raw truncate(recognize_stamps_as_links(h(post.content.force_encoding('utf-8'))), :length => 200)), post %> </p>
+        </div>
+      <% end %>
+    </div>
+
+    <div class="commentBox">
+      <%= form_for(Post.new) do |f| %>
+        <% if @post.errors.any? %>
+          <div id="error_explanation">
+            <h2><%= pluralize(@post.errors.count, "error") %> prohibited this post from being saved:</h2>
+
+            <ul>
+              <% @post.errors.full_messages.each do |msg| %>
+                <li><%= msg %></li>
+              <% end %>
+            </ul>
+          </div>
+        <% end %>
+        <%= f.hidden_field :link_url, {:value => post_url(@post)} %>
+        <%= f.hidden_field :parent_id, {:value => @post.id} %>
+        <div class="cText"><%= f.text_area :content %></div>
+        <div class="tips">一则留言同时发布在你的主页作为一则随想</div>
+        <%= f.submit "完成", :class=>"done" %>
+        <br clear="all" />
+      <% end %>
+    </div>
+
   </div>
-
-  <div class="actions">
-    <%= f.submit %>
+  <div class="sidebar">
+    <%= render "share/sidebar" %>
   </div>
-<% end %>
-
-
-<div class="sidebar">
-  <%= render "share/sidebar" %>
+  <br clear="all" />
 </div>
+
