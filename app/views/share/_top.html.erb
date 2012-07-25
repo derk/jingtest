@@ -1,12 +1,16 @@
-  <%= link_to "home", home_url %>
-  
-  <%= link_to "explore", explore_url %>
-  <%= link_to "posts", posts_url %>
-  <%= link_to "tools", tools_url %>
-  <% if user_signed_in? -%>
-    <%= link_to "logout", logout_url %>
-    <%#= link_to "logout", logout_url %>
-  <% else -%>
-    <%= link_to "signup", signup_url %>
-    <%= link_to "login", login_url %>
-  <% end -%>
+<h1>即景</h1>
+<div class="header">
+  <%= link_to image_tag("logo.gif"), home_url, :class=>"logo" %>
+  <h2 class="sligon">随时想，随时记</h2>       
+  <div class="links loginInfo">
+    <a href="#" class="jj-write"><img src="images/jj_write.gif" alt="写随想" /></a>
+    <% if user_signed_in? -%>
+      <%= link_to "Oliver Ding", "#", class=>"borderl0" %>
+      <%= link_to "发现", explore_url %>
+      <%= link_to "退出", logout_url %>
+    <% else -%>
+      <%= link_to "注册", signup_url %>
+      <%= link_to "发现", explore_url %>
+      <%= link_to "登录", login_url %>
+  </div>
+</div>
