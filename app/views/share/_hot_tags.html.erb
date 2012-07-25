@@ -1,0 +1,11 @@
+  <div class="tagList">
+    <ul>
+    <% @tags.each do |tag| -%>
+      <li>
+        <%= link_to_unless_current("##{h tag.name}", tag_url(tag)) do
+          ("<span class='cur'>##{h tag.name}</span>").html_safe
+        end %>
+        <em class="num"><%= tag.weight %></em>
+      </li>
+    <% end -%>      
+  </div>
