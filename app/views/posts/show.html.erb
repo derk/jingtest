@@ -6,11 +6,11 @@
         <div id="post_actions" class="tools">
           <%= link_to '编辑', edit_post_path(@post), :onclick>="document.getElementById('post_edit_form').style.display='block';document.getElementById('post_detail').style.display='none';document.getElementById('post_actions').style.display='none';" %>
           <span class="space">|</span>
-          <%= link_to '删除', delete_post_path(@post) %>
+          <%= link_to '删除', @post, method: :delete, data: { confirm: 'Are you sure?' } %>
         </div>
       </div>
       <div id="post_detail" class="postDetail">
-        <h2><%= link_to @post.shadow.web_url, @post.shadow.web_url, :target => "_blank" %></h2>
+        <h2>现实世界的演示文档 v.s. 虚拟世界的演示文档</h2>
         <div class="postDesc">
           <%= simple_format(raw(recognize_stamps_as_links(h(@post.content))), {}, :sanitize => false) %>
         </div>
@@ -42,10 +42,10 @@
       <div class="mod-detail messageInfo">
         <div class="mod-user">
           <div class="img">
-            <%=link_to image_tag("usericon10-42.png", :alt=>"麦夕林"), "#" %>                           
+            <%=link_to image_tag("usericon10-42.png", :alt=>"麦夕林"), posts_url %>                           
           </div>
           <div class="info">
-            <%=link_to "麦夕林", "#", :class=>"author" %> 
+            <%=link_to "麦夕林", posts_url, :class=>"author" %> 
             <span class="datetime">23/12/2012</span>
           </div><br clear="all" />
         </div>
@@ -58,10 +58,10 @@
       <div class="mod-detail messageInfo">
         <div class="mod-user">
           <div class="img">
-            <%=link_to image_tag("usericon7-42.png", :alt=>"黄安迪"), "#" %>                           
+            <%=link_to image_tag("usericon7-42.png", :alt=>"黄安迪"), "posts_url %>                           
           </div>
           <div class="info">
-            <%=link_to "黄安迪", "#", :class=>"author" %> 
+            <%=link_to "黄安迪", posts_url, :class=>"author" %> 
             <span class="datetime">
               <%= standard_date_text(@post.created_at) %>
             </span>
@@ -79,10 +79,10 @@
         <div class="mod-detail messageInfo">
           <div class="mod-user">
             <div class="img">
-              <%=link_to image_tag("usericon7-42.png", :alt=>"黄安迪"), "#" %>                           
+              <%=link_to image_tag("usericon7-42.png", :alt=>"黄安迪"), posts_url %>                           
             </div>
             <div class="info">
-              <%=link_to "黄安迪", "#", :class=>"author" %> 
+              <%=link_to "黄安迪", posts_url, :class=>"author" %> 
               <span class="datetime">23/12/2012</span>
             </div><br clear="all" />
           </div>
