@@ -1,4 +1,6 @@
 Jijing::Application.routes.draw do
+  get "profiles/show"
+
   root :to => 'site#index', :as => 'home'
   
   devise_for :users
@@ -7,6 +9,7 @@ Jijing::Application.routes.draw do
     post 'login' => 'devise/sessions#create', :as => :user_session
     get 'logout' => 'devise/sessions#destroy', :as => :logout
     get 'signup' => 'devise/registrations#new', :as => :signup
+    get '/users/:id', :to => 'profiles#show', :as => :profile
   end
 
 

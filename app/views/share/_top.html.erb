@@ -5,7 +5,7 @@
   <div class="links loginInfo">
     <%= link_to image_tag("ljj_write.gif"), new_post_path, :class=>"jj-write" %>
     <% if user_signed_in? -%>
-      <%= link_to "Oliver Ding", posts_url, :class=>"borderl0" %>
+      <%= link_to h(current_user.email), profile_url(current_user), :class=>"borderl0" %>
       <%= link_to "发现", explore_url %>
       <%= link_to "退出", logout_url %>
     <% else -%>
