@@ -1,18 +1,33 @@
-<h2>Sign up</h2>
-
-<%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
-  <%= devise_error_messages! %>
-
-  <div><%= f.label :email %><br />
-  <%= f.email_field :email %></div>
-
-  <div><%= f.label :password %><br />
-  <%= f.password_field :password %></div>
-
-  <div><%= f.label :password_confirmation %><br />
-  <%= f.password_field :password_confirmation %></div>
-
-  <div><%= f.submit "Sign up" %></div>
-<% end %>
-
-<%= render "devise/shared/links" %>
+<div class="userPage">
+  <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
+    <%= devise_error_messages! %>
+    <table class="userTable">
+      <tbody>
+        <tr>
+          <td class="coll">用户名：</td>
+          <td class="colr"><input class="user-txt" type="text" /><small>*</small>
+          <div class="tips">（最少4个字符，最多20个字符）</div></td>
+        </tr>
+        <tr>
+          <td class="coll">密码：</td>
+          <td class="colr"><%= f.password_field :password, :class=>"user-txt" %><small>*</small>
+          <div class="tips">（最少6个字符）</div></td>
+        </tr>
+        <tr>
+          <td class="coll">确认密码：</td>
+          <td class="colr"><%= f.password_field :password_confirmation, :class=>"user-txt" %></td>
+        </tr>
+        <tr>
+          <td class="coll">Email：</td>
+          <td class="colr"><%= f.email_field :email, :class=>"user-txt" %></td>
+        </tr>
+        <tr>
+          <td class="coll">&nbsp;</td>
+          <td class="colr">
+	    <%= f.submit "Sign up", :class=>"signup-btn" %>                  
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  <% end %>
+</div>

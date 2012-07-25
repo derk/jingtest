@@ -1,3 +1,20 @@
-<h1>Site#index</h1>
-
-<p>welcome to jijing.me!</p>
+<div class="welcome">
+  <h2 class="jjSligon"><%= image_tag("suixiangji.gif", :alt=>"随时想，随时记") %></h2>
+  <h3 class="jjDesc">Jijing即景是一款帮助你把网络信息有效地转化个人知识的工具。</h3>
+  <div class="jjDragBar">
+    <%=link_to image_tag("jijing.gif", :alt=>"随时想，随时记"), "#", :class=>"jj-drag" %>
+    <p>点击拖拉这个按钮到浏览器上，<br />
+      在浏览网页时，快速记录下你的所思所想。</p>
+  </div>
+  <div class="userList">
+    <h5>使用即景的朋友</h5>
+    <ul>
+      <li><%=link_to image_tag("usericon11-72.png", :alt=>"张小陌"), "#" %></li>
+      <li><%=link_to image_tag("usericon10-72.png", :alt=>"麦夕林"), "#" %></li>
+      <li><%=link_to image_tag("usericon8-72.png", :alt=>"黄小油"), "#" %></li>
+      <li><%=link_to image_tag("usericon2-72.png", :alt=>"安柏都"), "#" %></li>
+      <li><%=link_to image_tag("usericon9-72.png", :alt=>"李梦梦"), "#" %></li>
+      <li><%=link_to image_tag("usericon12-72.png", :alt=>"张业"), "#" %></li>
+    </ul><br clear="all" />
+  </div>
+</div>
