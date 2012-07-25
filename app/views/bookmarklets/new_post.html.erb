@@ -1,26 +1,19 @@
-<div id="bookmarklet_post_form">
-<h1>Bookmarklets</h1>
+<div id="bookmarklet_post_form" class="inputBox">
+  <%= form_for(@post, :remote=>true) do |f| %>
+    <% if @post.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(@post.errors.count, "error") %> prohibited this post from being saved:</h2>
 
-<%= form_for(@post, :remote=>true) do |f| %>
-  <% if @post.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@post.errors.count, "error") %> prohibited this post from being saved:</h2>
+        <ul>
+        <% @post.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
 
-      <ul>
-      <% @post.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
+    <%= hidden_field_tag "post[link_url]", @pg_url %>
+    <div class="inputText"><%= f.text_area :content %></div>
+    <%= f.submit "完 成", :class=>"pDone" %>
   <% end %>
-  
-  <%= hidden_field_tag "post[link_url]", @pg_url %>
-  <div class="contents">
-    <%= f.text_area :content, :size => "30x5" %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit %>
-  </div>
-<% end %>
 </div>
