@@ -148,27 +148,27 @@
   framediv.style.zIndex = "2147483647";
   framediv.style.top = "0";
   framediv.style.right = "0";
-  framediv.style.width = "426px";
-  framediv.style.height = "490px";
+  framediv.style.width = "384px";
+  framediv.style.height = "422px";
   framediv.style.margin = "0";
   framediv.style.padding = "0";
-  framediv.style.borderLeft = "6px solid #0097c9";
-  framediv.style.borderBottom = "6px solid #0097c9";
+  framediv.style.borderLeft = "6px solid #aeb4b2";
+  framediv.style.borderBottom = "6px solid #aeb4b2";
   framediv.style.background = "#fff";
   framediv.style.overflow = "hidden";
 
   var iframe = document.createElement("iframe");
   iframe.setAttribute('frameborder', '0', 0);
   iframe.src = getIframeSrc();
-  iframe.style.width = "426px";
-  iframe.style.height = "490px";
+  iframe.style.width = "384px";
+  iframe.style.height = "422px";
   iframe.style.margin = "0";
   iframe.style.padding = "0";
   iframe.style.background = "none";
   iframe.style.overflow = "hidden";
 
   var close = document.createElement("a");
-  close.innerHTML = '<img src="<%= full_image_url 'x_white.gif' %>" style="width: 19px;height: 19px;margin: 0;padding: 0;vertical-align: top;border: 0;background: transparent;" />';
+  close.innerHTML = '<img src="<%= full_image_url 'close_b.gif' %>" style="width: 23px;height: 23px;margin: 0;padding: 0;vertical-align: top;border: 0;background: transparent;" />';
   close.style.position = "absolute";
   close.style.top = "0";
   close.style.right = "0";
@@ -187,7 +187,7 @@
   });
 
   var close_img = document.createElement("img");
-  close_img.src = '<%= full_image_url 'x_white.gif' %>';
+  close_img.src = '<%= full_image_url 'close_b.gif' %>';
   close.appendChild( close_img );
 
 
