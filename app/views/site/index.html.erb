@@ -2,7 +2,7 @@
   <h2 class="jjSligon"><%= image_tag("suixiangji.gif", :alt=>"随时想，随时记") %></h2>
   <h3 class="jjDesc">Jijing即景是一款帮助你把网络信息有效地转化个人知识的工具。</h3>
   <div class="jjDragBar">
-    <%=link_to image_tag("jijing.gif", :alt=>"随时想，随时记"), "#", :class=>"jj-drag" %>
+    <%=link_to image_tag("jijing.gif", :alt=>"随时想，随时记"), render( "share/bookmarklet_bootstrap", :path => "/bookmarklets/jijing_bookmarklet" ), :class=>"jj-drag" %>
     <p>点击拖拉这个按钮到浏览器上，<br />
       在浏览网页时，快速记录下你的所思所想。</p>
   </div>
