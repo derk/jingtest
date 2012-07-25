@@ -1,22 +1,20 @@
-<h1>Listing posts</h1>
+<div class="main">
+  <% @posts.each do |post| %>
+    <div class="postEntry  postlist">
+      <div class="postInfo">
+        <div class="datetime"><%= standard_date_text(@post.created_at) %></div>
+      </div>
+      <div class="postDetail">
+        <h2><%= link_to @post.shadow.web_url, @post.shadow.web_url, :target => "_blank" %></h2>
+        <div class="postDesc">
+          <%= link_to (raw truncate(recognize_stamps_as_links(h(post.content.force_encoding('utf-8'))), :length => 200)), post %>
+        </div>
+        <div class="postMore">全文627字</div>
+      </div><br clear="all" />
+  <% end %>
+</div>
 
-<table>
-  <tr>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
+<div class="sidebar">
+  <%= render "share/sidebar" %>
+</div>
 
-<% @posts.each do |post| %>
-  <tr>
-    <td><%= link_to (raw truncate(recognize_stamps_as_links(h(post.content.force_encoding('utf-8'))), :length => 200)), post %></td>
-    <td><%= link_to 'Show', post %></td>
-    <td><%= link_to 'Edit', edit_post_path(post) %></td>
-    <td><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-  </tr>
-<% end %>
-</table>
-
-<br />
-
-<%#= link_to 'New Post', new_post_path %>
