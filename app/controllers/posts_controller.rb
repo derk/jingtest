@@ -4,7 +4,7 @@ class PostsController < ApplicationController
   before_filter :authenticate_user!
 
   def index
-    @posts = Post.all
+    @posts = Post.paginate :per_page => 10, :page => params[:page], :order => "created_at DESC"
 
     respond_to do |format|
       format.html # index.html.erb

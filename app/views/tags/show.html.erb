@@ -1,5 +1,5 @@
 <div class="tagsTotal">
-  <h2>#TEDGlobal</h2>
+  <h2>#<%=h @tag.name %></h2>
   <% if user_signed_in? -%>
     <p class="cur"><%=link_to "Oliver Ding（12篇）", posts_url %></p>
     <p>其他人（25篇）</p>
@@ -10,50 +10,20 @@
 </div>
 
 <div class="main">
-  <div class="postEntry postlist">
-    <div class="postInfo">
-      <div class="datetime">22/12/12</div>
-    </div>
-    <div class="postDetail">
-      <h3><%=link_to "2012 如果你看过《维基经济学》 应该很熟悉作者Don Tapscott （唐·泰普斯科特），他在1992年创", post_url{:id=>"16"} %></h3>
-      <div class="postDesc">
-        <p>1992年创办新范式（New Paradigm）智库 ，不断地写书，追踪最新网络技术对商业，教育，
-          科研等社会各方面的影响。他在这次<%=link_to "#TEDGlobal", tags_url %>上说社会化媒体已经进化到社会化生产。</p>
-        <p>没有任何一个国家能承受教育质量窳劣和社会不平等加深的后果。那么许多人都会问："到
-          底是要教育质量优良和社会不平等好，还是要教育质量平庸和社会平等好呢？" 安德烈亚斯·施莱克尔在
-          <%=link_to "#TEDGlobal 2012", tags_url %> 谈用数据来构建更好的教育体系 http://t.cn/zWyjzSZ时留言给自己...</p>                         
-      </div>
-    <div class="postMore">全文627字&nbsp;&nbsp;&nbsp;&nbsp;3条评论</div>
-  </div><br clear="all" />
-
-  <div class="postEntry postlist">
-    <div class="postInfo">
-      <div class="datetime">22/12/12</div>
-    </div>
-    <div class="postDetail">
-    <h3><%=link_to "#TEDGlobal 如果你为TED精彩演讲感动震撼，别忘了感谢这些在幕后工作的人员。为这些自由灵魂唱向", post_url{:id=>"16"} %></h3>
-    <div class="postDesc">
-      <p>看到一个网友，她说这个星期在英国爱丁堡  <%=link_to "#TEDGlobal 2012", tags_url %>大会，刚刚结
-        束，总算是可以喘口气了。全部报道在此： http://t.cn/zWwuQli</p>                         
-    </div>
-    <div class="postMore">全文100字&nbsp;&nbsp;&nbsp;&nbsp;3条评论</div>
-  </div><br clear="all" />
-
-  <% @posts.group_by{ |s| s.created_at.strftime("%Y/%m/%d") }.each do |date, posts_by_date| -%>
-    <% posts_by_date.each do |post| -%>
+  <% @posts.each do |post| -%>
       <div class="postEntry postlist">
         <div class="postInfo">
           <div class="datetime"><%= time_ago_in_words(post.created_at) %></div>
         </div>
         <div class="postDetail">
-          <h3><%=link_to "#TEDGlobal 如果你为TED精彩演讲感动震撼，别忘了感谢这些在幕后工作的人员。为这些自由灵魂唱向", post %></h3>
+          <h3><%= link_to (raw truncate(recognize_stamps_as_links(h(post.content.force_encoding('utf-8'))), :length => 50)), post %></h3>
           <div class="postDesc">
-            <%= link_to (raw truncate(recognize_stamps_as_links(h(post.content.force_encoding('utf-8'))), :length => 200)), post %>                      
+            <%= raw truncate(recognize_stamps_as_links(h(post.content.force_encoding('utf-8'))), :length => 200) %>                      
           </div>
-          <div class="postMore">全文100字&nbsp;&nbsp;&nbsp;&nbsp;3条评论</div>
+          <% count = post.children.size -%>          
+          <div class="postMore">全文<%= post.content.length %>字<% if count > 0 -%>&nbsp;&nbsp;&nbsp;&nbsp;<%= count %>条评论<% end -%></div>
         </div><br clear="all" />
       </div>
-    <% end -%>
   <% end -%>
 </div>
 

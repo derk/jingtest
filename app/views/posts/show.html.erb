@@ -4,13 +4,13 @@
       <div class="postInfo">
         <div class="datetime"><%= standard_date_text(@post.created_at) %></div>
         <div id="post_actions" class="tools">
-          <%= link_to '编辑', edit_post_path(@post), :onclick>="document.getElementById('post_edit_form').style.display='block';document.getElementById('post_detail').style.display='none';document.getElementById('post_actions').style.display='none';" %>
+          <%= link_to '编辑', edit_post_path(@post), :onclick=>"document.getElementById('post_edit_form').style.display='block';document.getElementById('post_detail').style.display='none';document.getElementById('post_actions').style.display='none';" %>
           <span class="space">|</span>
           <%= link_to '删除', @post, method: :delete, data: { confirm: 'Are you sure?' } %>
         </div>
       </div>
       <div id="post_detail" class="postDetail">
-        <h2>现实世界的演示文档 v.s. 虚拟世界的演示文档</h2>
+        <h2><%= simple_format(raw(truncate(recognize_stamps_as_links(h(@post.content.force_encoding('utf-8'))), :length => 50)), {}, :sanitize => false) %></h2>
         <div class="postDesc">
           <%= simple_format(raw(recognize_stamps_as_links(h(@post.content))), {}, :sanitize => false) %>
         </div>
@@ -31,49 +31,12 @@
     <div class="mod postMod">
       <div class="mod-title">灵感链接</div>
       <div class="mod-detail mrginb42">
-        <h5><%= link_to '《维基经济学》（豆瓣）', "http://book.douban.com/subject/2265341/", :target=>"_bliank" %></h5>
-        <p>维基经济学的得名，缘于维基百科全书网站的巨大成功，他向世界证明：如果有一种方
-                    	法充分利用组织里每一个人的智慧，它的能量将无比惊人！维基经济学所揭示的四个新法则：
-                        开放、对等、共享以及全球运作，正在取代一些旧的商业心教条。</p>
-        <p><%= link_to '《http://book.douban.com/subject/2265341/', "http://book.douban.com/subject/2265341/", :class=>"web", :target=>"_bliank" %></p>
+        <h5><%= link_to h(truncate(@post.shadow.title, :length => 50)), @post.shadow.web_url, :target=>"_bliank" %></h5>
+        <p><%=h @post.shadow.description %></p>
+        <p><%= link_to @post.shadow.web_url, @post.shadow.web_url, :class=>"web", :target=>"_bliank" %></p>
       </div>
 
-      <div class="mod-title">留言（<%= @children.size %>)条）</div>
-      <div class="mod-detail messageInfo">
-        <div class="mod-user">
-          <div class="img">
-            <%=link_to image_tag("usericon10-42.png", :alt=>"麦夕林"), posts_url %>                           
-          </div>
-          <div class="info">
-            <%=link_to "麦夕林", posts_url, :class=>"author" %> 
-            <span class="datetime">23/12/2012</span>
-          </div><br clear="all" />
-        </div>
-        <p>新网络也帮助把科学界转变为一个逐渐开放和协作的网络，特点如下： 最有技术和标准
-                    	的快速传播； 新技术的融合和重组的刺激； 最新的专业技术和有效的研究工具的可获
-                        得性； 更加快捷的产学研网络，使公共知识到私人企业的积极反馈更加迅速； 越来
-                        越多广泛和分散的研究和创新模式，包括科学知识、工具、网络的更加开放。</p>
-      </div>
-
-      <div class="mod-detail messageInfo">
-        <div class="mod-user">
-          <div class="img">
-            <%=link_to image_tag("usericon7-42.png", :alt=>"黄安迪"), "posts_url %>                           
-          </div>
-          <div class="info">
-            <%=link_to "黄安迪", posts_url, :class=>"author" %> 
-            <span class="datetime">
-              <%= standard_date_text(@post.created_at) %>
-            </span>
-          </div><br clear="all" />
-        </div>
-        <p>我们对开放式平台这种商业模型的讨论可以归纳为以下三点：第一、所有最新
-                    	科技的应用都讲经历一段早期的不景气，随后真正可行的商业模型才会出现；
-                        第二、极端的权力下放以及开放政策将建立一种真正可行的商业模式，这
-                        种成功接近正常的参数范围与奖励革新，并同时避免破坏那些促成创新系统
-                        的特征；第三、只有在全体股东确保为用户提供丰厚奖励的前提下，才能确
-                        保平台参与的可行性开放。 </p>
-      </div>
+      <div class="mod-title">留言（<%= @children.size %>)条</div>
 
       <% @children.each do |post| %>
         <div class="mod-detail messageInfo">
@@ -89,14 +52,12 @@
           <p><%= link_to (raw truncate(recognize_stamps_as_links(h(post.content.force_encoding('utf-8'))), :length => 200)), post %> </p>
         </div>
       <% end %>
-    </div>
 
     <div class="commentBox">
       <%= form_for(Post.new) do |f| %>
         <% if @post.errors.any? %>
           <div id="error_explanation">
             <h2><%= pluralize(@post.errors.count, "error") %> prohibited this post from being saved:</h2>
-
             <ul>
               <% @post.errors.full_messages.each do |msg| %>
                 <li><%= msg %></li>
@@ -112,8 +73,8 @@
         <br clear="all" />
       <% end %>
     </div>
-
   </div>
+
   <div class="sidebar">
     <%= render "share/sidebar" %>
   </div>

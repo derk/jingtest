@@ -6,7 +6,7 @@ class SiteController < ApplicationController
   end
 
   def explore
-    @posts = Post.all
+    @posts = Post.paginate :per_page => 10, :page => params[:page], :order => "created_at DESC"
   end
 
   def about

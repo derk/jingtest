@@ -2,10 +2,10 @@
   <div class="copywrite">&copy;2012 Jijing 即景</div>
   <div class="links">
     <%= link_to_unless_current("首页", home_url, :class=>"borderl0") do
-      "<span class="cur borderl0">首页</span>"
+      ("<span class='cur borderl0'>首页</span>").html_safe
     end %>
-    <%= link_to_unless_current("关于", about_url) do
-      "<span class="cur">关于</span>"
+    <%= link_to_unless_current('关于', about_url) do
+      ("<span class='cur'>关于</span>").html_safe
     end %>
   </div>
   <br clear="all" />

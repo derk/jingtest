@@ -4,7 +4,7 @@ class Post < ActiveRecord::Base
   belongs_to :user, :counter_cache => true, :touch => true
   has_one :shadow, :dependent => :destroy, :autosave => true
   belongs_to :parent, :class_name => "Post", :foreign_key => :parent_id
-  has_many :children, :class_name => "Post", :foreign_key => :parent_id
+  has_many :children, :class_name => "Post", :foreign_key => :parent_id, :order => "created_at DESC"
   
   attr_accessible :content, :link_url, :parent_id
   # link_url can be set when shadow (child) does not yet exist
