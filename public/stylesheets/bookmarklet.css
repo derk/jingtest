@@ -1,0 +1,41 @@
+body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,form,fieldset,input,textarea,p,blockquote,th,td { 
+	margin:0;
+	padding:0;
+}
+html{background:#e2f3ff;color:#707070;width:384px;height:444px;overflow:hidden;}
+body{font:13px/1.231 "微软雅黑", "Microsoft yahei", "宋体",arial,helvetica,clean,sans-serif;*font-size:small;*font:x-small}
+select,input,textarea,button{font:99% arial,helvetica,clean,sans-serif}
+table{font-size:inherit;font:100%}
+a,img{border:0;}
+a{color:#2197ef;text-decoration:none;outline:none;}
+a:hover{color:#f00;text-decoration:none;}
+
+.wrap{padding:0 16px;height:441px;border-left:1px solid #798ca3;border-bottom:1px solid #798ca3;}
+
+.hd{height:60px;overflow:hidden;}
+h1{float:left;margin:8px 0 0 0;}
+.loginInfo{float:right;margin:30px 0 0 0;font-size:93%;line-height:100%;}
+.loginInfo a{float:left;display:block;padding:0 6px;color:#acacac;border-left:1px solid #acacac;}
+.loginInfo a:hover{color:#f00;}
+.loginInfo .uname{color:#2197ef;border-left:0;}
+
+.borderl0{border-left:0;}
+
+.inputBox{}
+.inputBox .pDone{float:right;}
+.inputText{background:#fff;margin-bottom:11px;width:350px;height:332px;overflow:hidden;border:1px solid #ccc;}
+.inputText textarea{margin:8px 10px;width:330px;height:316px;color:#858383;font-size:108%;font-weight:100;line-height:180%;overflow:hidden;border:0;}
+.pDone{background:url(../images/bookmarklet.gif) no-repeat 0 0;width:56px;height:25px;border:0;color:#fff;font-size:108%;line-height:25px;cursor:pointer;}
+.pDone:hover{background-position:-71px 0;}
+.pWrite{background:url(../images/bookmarklet.gif) no-repeat -145px 0;width:67px;height:25px;border:0;color:#fff;font-size:108%;line-height:25px;cursor:pointer;}
+.pWrite:hover{background-position:-231px 0;}
+
+.listBox{margin:12px 12px 0 12px;}
+.listBox .pWrite{float:right;}
+.listBox em{font-size:93%;}
+.marginb60{margin-bottom:60px;}
+.listTitle{margin-bottom:16px;color:#707070;font-size:108%;line-height:100%;}
+.pTitle{margin-bottom:14px;height:46px;overflow:hidden;font-size:108%;line-height:180%;}
+.pTitle a{color:#0aa7d6;text-decoration:underline;}
+.tag0{font-size:123.1%;line-height:180%;}
+.relatedLink{margin-bottom:12px;height:100px;overflow:hidden;}
