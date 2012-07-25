@@ -22,6 +22,7 @@ Jijing::Application.routes.draw do
 
   get "bookmarklets/jijing_bookmarklet"
 
+  match 'following', :to => 'site#following', :as => 'following'
   match 'explore', :to => 'site#explore', :as => 'explore'
   match 'about',   :to => 'site#about',   :as => 'about'
   match 'help',    :to => 'site#help',    :as => 'help'

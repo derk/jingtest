@@ -2,6 +2,9 @@ class SiteController < ApplicationController
   def index
   end
 
+  def following
+  end
+
   def explore
     @posts = Post.all
   end
