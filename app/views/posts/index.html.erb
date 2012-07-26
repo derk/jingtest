@@ -6,7 +6,7 @@
           <div class="datetime"><%= date %></div>
         </div>
         <div class="postDetail">
-          <h2><%= link_to (raw truncate(recognize_stamps_as_links(h(post.content.force_encoding('utf-8'))), :length => 46, :omission => '')), post %></h2>
+          <h2><%= link_to raw(recognize_stamps_as_links(truncate(h(post.content.force_encoding('utf-8')), {:length => 46, :omission => ''}))), post_url(post) %></h2>
           <div class="postDesc">
             <%= raw truncate(recognize_stamps_as_links(string_from(h(post.content.force_encoding('utf-8')), :length => 46, :omission => '')), :length => 320, :separator => ' ' || ',' || '，') %>
           </div>

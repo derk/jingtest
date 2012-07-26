@@ -1,6 +1,7 @@
+require 'will_paginate/array'
 class ProfilesController < ApplicationController
   before_filter :find_user
-  before_filter :authenticate_user!, :except => [:show]
+  before_filter :authenticate_user!, :except => [:show, :following]
 
   def show    
     @posts = Post.paginate :per_page => 10, :page => params[:page], :conditions => "posts.user_id = #{@user.id}", :order => "created_at DESC"
@@ -15,6 +16,11 @@ class ProfilesController < ApplicationController
 	VisitJournal.create!(:guest_id => current_user.id, :user_id => @user.id, :last_visited_at => Time.new)
       end
     end    
+  end
+
+  def following
+    @following = @user.all_following.paginate :per_page => 10, :page => params[:page]
+    @tags = Tag.by_self(@user.id).first(5)
   end
 
   def follow

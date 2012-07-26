@@ -1,6 +1,6 @@
 
   <div class="userInfo">
-    <%=link_to image_tag("usericon0-120.png", :alt=> h(@user.name)), profile_url(@user) %>
+    <%= link_to image_tag("usericon#{rand(12)}-120.png", :alt=> h(@user.name)), profile_url(@user) %>
     <h5><%=link_to h(@user.name), profile_url(@user) %></h5>
     <% if user_signed_in? && current_user != @user -%>
       <div id="follow">
@@ -31,7 +31,7 @@
     <h5>关注</h5>
     <ul>
       <% @following.each do |following| -%>
-        <li><%= link_to image_tag("usericon#{rand(12)}-72.png", :title=> h(following.name)), profile_url(following) %></li>
+        <li><%= link_to image_tag("usericon#{rand(12)}-72.png", :title=> h(following.name)), following_url(following) %></li>
       <% end -%>
     </ul><br clear="all" />
     <div class="more">全部<%= @following.size %>人&nbsp;&nbsp;更新29条</div>

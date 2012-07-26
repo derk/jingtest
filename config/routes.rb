@@ -12,8 +12,9 @@ Jijing::Application.routes.draw do
     get '/users/:id', :to => 'profiles#show', :as => :profile
   end
 
-  post "/follow/:id", :to => 'profiles#follow', :as => :follow
-  delete "/unfollow/:id", :to => 'profiles#unfollow', :as => :unfollow
+  post '/follow/:id', :to => 'profiles#follow', :as => :follow
+  delete '/unfollow/:id', :to => 'profiles#unfollow', :as => :unfollow
+  match '/users/:id/following', :to => 'profiles#following', :as => 'following'
 
   resources :posts
 
@@ -27,7 +28,6 @@ Jijing::Application.routes.draw do
 
   get "bookmarklets/jijing_bookmarklet"
 
-  match 'following', :to => 'site#following', :as => 'following'
   match 'explore', :to => 'site#explore', :as => 'explore'
   match 'about',   :to => 'site#about',   :as => 'about'
   match 'help',    :to => 'site#help',    :as => 'help'
