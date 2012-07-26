@@ -25,9 +25,9 @@ h1{float:left;margin:8px 0 0 0;}
 .inputBox .pDone{float:right;}
 .inputText{background:#fff;margin-bottom:11px;width:350px;height:332px;overflow:hidden;border:1px solid #ccc;}
 .inputText textarea{margin:8px 10px;width:330px;height:316px;color:#858383;font-size:108%;font-weight:100;line-height:180%;overflow:hidden;border:0;}
-.pDone{background:url(../images/bookmarklet.gif) no-repeat 0 0;width:56px;height:25px;border:0;color:#fff;font-size:108%;line-height:25px;cursor:pointer;}
+.pDone{background:url(../assets/images/bookmarklet.gif) no-repeat 0 0;width:56px;height:25px;border:0;color:#fff;font-size:108%;line-height:25px;cursor:pointer;}
 .pDone:hover{background-position:-71px 0;}
-.pWrite{background:url(../images/bookmarklet.gif) no-repeat -145px 0;width:67px;height:25px;border:0;color:#fff;font-size:108%;line-height:25px;cursor:pointer;}
+.pWrite{background:url(../assets/images/bookmarklet.gif) no-repeat -145px 0;width:67px;height:25px;border:0;color:#fff;font-size:108%;line-height:25px;cursor:pointer;}
 .pWrite:hover{background-position:-231px 0;}
 
 .listBox{margin:12px 12px 0 12px;}
