@@ -19,4 +19,15 @@ module ApplicationHelper
       content.gsub(/#[A-Z0-9a-z\-\_]+/){|stamp| link_to stamp, tag_url(stamp[1,stamp.length]), :class => 'green'}      
     end
   end
+
+  def string_from(text, options = {})
+    text = text.dup
+
+    length_with_room_for_omission = options[:length] - options[:omission].mb_chars.length
+    chars = text.mb_chars
+    stop = options[:separator] ?
+     (chars.rindex(options[:separator].mb_chars, length_with_room_for_omission) || length_with_room_for_omission) : length_with_room_for_omission
+
+    (chars.length > options[:length] ? chars[stop..-1]  : '').to_s
+  end
 end

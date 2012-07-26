@@ -10,9 +10,9 @@
         </div>
       </div>
       <div id="post_detail" class="postDetail">
-        <h2><%= simple_format(raw(truncate(recognize_stamps_as_links(h(@post.content.force_encoding('utf-8'))), :length => 50)), {}, :sanitize => false) %></h2>
+        <h2><%= truncate(recognize_stamps_as_links(h(@post.content.force_encoding('utf-8'))), :length => 46, :separator => ' ' || ',' || ',', :omission => '') %></h2>
         <div class="postDesc">
-          <%= simple_format(raw(recognize_stamps_as_links(h(@post.content))), {}, :sanitize => false) %>
+          <%= simple_format(raw(recognize_stamps_as_links(h(string_from(@post.content, :length => 46, :separator => ' ' || ',' || ',', :omission => '')))), {}, :sanitize => false) %>
         </div>
       </div>
       <div id="post_edit_form" class="postEditForm" style="display:none;">
@@ -42,14 +42,14 @@
         <div class="mod-detail messageInfo">
           <div class="mod-user">
             <div class="img">
-              <%=link_to image_tag("usericon7-42.png", :alt=>"黄安迪"), posts_url %>                           
+              <%=link_to image_tag("usericon#{rand(12)}-42.png", :title => h(post.user.name)), profile_url(post.user) %>                           
             </div>
             <div class="info">
-              <%=link_to "黄安迪", posts_url, :class=>"author" %> 
-              <span class="datetime">23/12/2012</span>
+              <%=link_to h(post.user.name), profile_url(post.user), :class=>"author" %> 
+              <span class="datetime"><%= standard_date_text(post.created_at) %></span>
             </div><br clear="all" />
           </div>
-          <p><%= link_to (raw truncate(recognize_stamps_as_links(h(post.content.force_encoding('utf-8'))), :length => 200)), post %> </p>
+          <p><%= simple_format(raw(recognize_stamps_as_links(h(post.content))), {}, :sanitize => false) %> </p>
         </div>
       <% end %>
 

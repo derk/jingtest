@@ -1,10 +1,12 @@
 class PostsController < ApplicationController
   # GET /posts
   # GET /posts.json
-  before_filter :authenticate_user!
+  before_filter :authenticate_user!, :except => [:index, :show]
 
   def index
     @posts = Post.paginate :per_page => 10, :page => params[:page], :order => "created_at DESC"
+    @user = current_user
+    @tags = Tag.top_weighted(10)
 
     respond_to do |format|
       format.html # index.html.erb
@@ -15,8 +17,11 @@ class PostsController < ApplicationController
   # GET /posts/1
   # GET /posts/1.json
   def show
-    @post = Post.find(params[:id])
+    @post = Post.find(params[:id], :include => [:user, :children])
     @children = @post.children
+    @user = @post.user
+    @tags = Tag.by_self(@user.id).first(5)
+    @following = @user.all_following
 
     respond_to do |format|
       format.html # show.html.erb

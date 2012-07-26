@@ -29,17 +29,17 @@
 </div>
 
 <div class="sidebar">
-  <% if user_signed_in? -%>
-    <%= render "share/sidebar" %>
-  <% else %>
     <div class="tagList">
       <h5>相关标签</h5>
-      <ul>
-        <li><%=link_to "# TEDGlobal", tags_url %><em class="num">12</em></li>
-        <li><%=link_to "# TEDtoChina", tags_url %><em class="num">32</em></li>
-        <li><%=link_to "# Education", tags_url %><em class="num">32</em></li>
-        <li><%=link_to "# Design", tags_url %><em class="num">62</em></li>
-        <li><%=link_to "# SocialMedia", tags_url %><em class="num">79</em></li>
+      <ul>       
+    <% @related_tags.each do |tag| -%>
+      <li>
+        <%= link_to_unless_current("##{h tag.name}", tag_url(tag)) do
+          ("<span class='cur'>##{h tag.name}</span>").html_safe
+        end %>
+        <em class="num"><%= tag.weight %></em>
+      </li>
+    <% end -%>
       </ul>
     </div>
             
@@ -60,7 +60,6 @@
         <li><%=link_to image_tag("usericon12-72.png", :alt=>"Oliver Ding"), posts_url %></li>
       </ul><br clear="all" />
     </div>
-  <% end %>
 </div>
 
 

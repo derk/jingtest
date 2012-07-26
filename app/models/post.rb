@@ -52,7 +52,7 @@ protected
     def create_tags
       tag_ids = []
         
-      matches = self.content.to_s.scan(/#([A-Z0-9a-z\-\_]+)/)
+      matches = self.content.scan(/#([A-Z0-9a-z\-\_]+)/)
       matches.each do |content_tag|
         tag = Tag.find_or_create_with_like_by_name content_tag.first
         unless tag.nil?

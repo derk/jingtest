@@ -12,6 +12,8 @@ Jijing::Application.routes.draw do
     get '/users/:id', :to => 'profiles#show', :as => :profile
   end
 
+  post "/follow/:id", :to => 'profiles#follow', :as => :follow
+  delete "/unfollow/:id", :to => 'profiles#unfollow', :as => :unfollow
 
   resources :posts
 
