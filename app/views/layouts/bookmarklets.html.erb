@@ -1,17 +1,31 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Jijing</title>
-  <%= stylesheet_link_tag    "application", :media => "all" %>
+  <title>书签-Jijing即景</title>
+  <%= stylesheet_link_tag    "bookmarklet", :media => "all" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
 </head>
 <body>
-  <%= link_to "explore", explore_url, :target => "_blank" %>
+<div class="wrap">
+  <div class="hd">
+    <h1><%= link_to image_tag("logo_b.gif", :alt=>"即景"), home_url, :class=>"logo", :target=>"_blank" %></h1>
+    <div class="loginInfo">
+      <% if user_signed_in? -%>
+        <%=link_to "Oliver Ding", "#", :class=>"uname", :target=>"_blank" %>
+        <%= link_to "登出", logout_url %>
+     <% else -%>
+        <%= link_to "注册", signup_url %>
+        <%= link_to "登录", login_url %>
+    <% end -%>
+    </div>
+  </div>
 
   <p class="notice"><%= notice %></p>
   <p class="alert"><%= alert %></p>
 
   <%= yield %>
+
+</div>
 </body>
 </html>
