@@ -7,7 +7,7 @@ class Follow < ActiveRecord::Base
   belongs_to :followable, :polymorphic => true
   belongs_to :follower,   :polymorphic => true
 
-  after_create :init_visit_journal, :if => Proc.new { |f| f.follower.visit_journals.where(:user_id => f.followable_id).empty? }
+  after_create :init_visit_journal
 
   def block!
     self.update_attribute(:blocked, true)
@@ -15,7 +15,11 @@ class Follow < ActiveRecord::Base
 
 private
   def init_visit_journal
-    VisitJournal.create!(:guest_id => self.follower_id, :user_id => self.followable_id, :last_visited_at => 1.year.ago)
+    journal = VisitJournal.where(:guest_id => self.follower_id, :user_id => self.followable_id).first
+    unless journal
+    	VisitJournal.create!(:guest_id => self.follower_id, :user_id => self.followable_id, :last_visited_at => Time.local(2012,1,1))
+    end
+    true
   end
 
 end
