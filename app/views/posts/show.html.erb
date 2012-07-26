@@ -10,9 +10,9 @@
         </div>
       </div>
       <div id="post_detail" class="postDetail">
-        <h2><%= truncate(recognize_stamps_as_links(h(@post.content.force_encoding('utf-8'))), :length => 46, :separator => ' ' || ',' || ',', :omission => '') %></h2>
+        <h2><%= raw(recognize_stamps_as_links(truncate(h(@post.content.force_encoding('utf-8')), {:length => 46, :omission => ''}))) %></h2>
         <div class="postDesc">
-          <%= simple_format(raw(recognize_stamps_as_links(h(string_from(@post.content, :length => 46, :separator => ' ' || ',' || ',', :omission => '')))), {}, :sanitize => false) %>
+          <%= simple_format(raw(recognize_stamps_as_links(string_from(h(@post.content.force_encoding('utf-8')), :length => 46, :omission => ''))), {}, :sanitize => false) %>
         </div>
       </div>
       <div id="post_edit_form" class="postEditForm" style="display:none;">
@@ -73,6 +73,7 @@
         <%= f.submit "完成" %>
         <br clear="all" />
       <% end %>
+    </div>
     </div>
   </div>
 

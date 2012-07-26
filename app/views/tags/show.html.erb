@@ -16,9 +16,9 @@
           <div class="datetime"><%= standard_date_text(post.created_at) %></div>
         </div>
         <div class="postDetail">
-          <h3><%= link_to (raw truncate(recognize_stamps_as_links(h(post.content.force_encoding('utf-8'))), :length => 50)), post %></h3>
+          <h3><%= link_to raw(recognize_stamps_as_links(truncate(h(post.content.force_encoding('utf-8')), {:length => 46, :omission => ''}))), post %></h3>
           <div class="postDesc">
-            <%= raw truncate(recognize_stamps_as_links(h(post.content.force_encoding('utf-8'))), :length => 200) %>                      
+            <%= raw truncate(recognize_stamps_as_links(string_from(h(post.content.force_encoding('utf-8')), :length => 46, :omission => '')), :length => 320, :separator => ' ' || ',' || '，') %>                     
           </div>
           <% count = post.children.size -%>          
           <div class="postMore">全文<%= post.content.length %>字<% if count > 0 -%>&nbsp;&nbsp;&nbsp;&nbsp;<%= count %>条评论<% end -%></div>
