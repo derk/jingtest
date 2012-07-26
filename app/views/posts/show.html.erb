@@ -69,7 +69,8 @@
         <%= f.hidden_field :parent_id, {:value => @post.id} %>
         <div class="cText"><%= f.text_area :content %></div>
         <div class="tips">一则留言同时发布在你的主页作为一则随想</div>
-        <%= f.submit "完成", :class=>"done" %>
+        <%#= f.submit "完成", :class=>"done" %>
+        <%= f.submit "完成" %>
         <br clear="all" />
       <% end %>
     </div>
