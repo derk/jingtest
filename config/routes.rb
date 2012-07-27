@@ -35,7 +35,7 @@ Jijing::Application.routes.draw do
   match 'blog',    :to => 'site#blog',    :as => 'blog'
 
   match 'tags/:id', :to => 'tags#show', :as => 'tag'
-  match 'tags/:id/u/:user_id', :to => 'tags#show', :as => 'tag_by_user'
+  match 'tags/:id/users/:user_id', :to => 'tags#show', :as => 'tag_by_user'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
