@@ -14,6 +14,6 @@
 
     <%= hidden_field_tag "post[link_url]", @pg_url %>
     <div class="inputText"><%= f.text_area :content, :cols => "30", :rows => "10" %></div>
-    <%= f.submit "完 成", :class=>"pDone" %>
+    <%= f.submit :class=>"pDone" %>
   <% end %>
 </div>

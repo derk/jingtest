@@ -1,5 +1,15 @@
-<h1>New post</h1>
 
-<%= render 'form' %>
+  <div class="main">
+    <div class="postEntry">
+      <div class="postInfo">
+        &nbsp;
+      </div>
 
-<%= link_to 'Back', posts_path %>
+      <div class="postEditForm">
+        <%= render 'form' %>
+        <br clear="all" />
+        <%= link_to 'Back', posts_path %>
+      </div>
+    </div>
+  </div>
+  <div class="sidebar">&nbsp;</div>
