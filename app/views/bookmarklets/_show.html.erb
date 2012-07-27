@@ -1,4 +1,4 @@
 <%= link_to truncate(h(post.content.force_encoding('utf-8')), {:length => 300, :omission => ''}), post_url(post), :target => "_blank" %>
 <br />
 <br />
-<%= recognize_stamps_as_links(post.content.force_encoding('utf-8'), :user => post.user) %>
+<%= recognize_stamps_as_links(post.content.force_encoding('utf-8'), :user => post.user, :target => "_blank") %>

@@ -15,9 +15,9 @@ module ApplicationHelper
   def recognize_stamps_as_links(content, options={})
     tags = []
     unless options[:user].nil?
-      content.gsub(/#[A-Z0-9a-z\-\_]+/){|stamp| tags << link_to(stamp, tag_by_user_url(stamp[1,stamp.length], options[:user]), :class => 'green') }
+      content.gsub(/#[A-Z0-9a-z\-\_]+/){|stamp| tags << link_to(stamp, tag_by_user_url(stamp[1,stamp.length], options[:user]), :class => 'green', :target => options[:target] || "_self") }
     else
-      content.gsub(/#[A-Z0-9a-z\-\_]+/){|stamp| tags << link_to(stamp, tag_url(stamp[1,stamp.length]), :class => 'green') }      
+      content.gsub(/#[A-Z0-9a-z\-\_]+/){|stamp| tags << link_to(stamp, tag_url(stamp[1,stamp.length]), :class => 'green', :target => options[:target] || "_self") }      
     end
     return tags.join(' ').html_safe
   end
@@ -31,5 +31,11 @@ module ApplicationHelper
      (chars.rindex(options[:separator].mb_chars, length_with_room_for_omission) || length_with_room_for_omission) : length_with_room_for_omission
 
     (chars.length > options[:length] ? chars[stop..-1]  : '').to_s
+  end
+
+  def delete_by(object)
+    if user_signed_in? && current_user.name == "derk"
+      link_to 'delete', object, method: :delete, data: { confirm: 'Are you sure?' }
+    end
   end
 end

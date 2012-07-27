@@ -82,8 +82,12 @@ class PostsController < ApplicationController
 
   # DELETE /posts/1
   # DELETE /posts/1.json
-  def destroy
-    @post = current_user.posts.find(params[:id])
+  def destroy    
+    unless current_user.name == "derk"
+      @post = Post.find(params[:id])
+    else
+      @post = current_user.posts.find(params[:id])
+    end
     @post.destroy
 
     respond_to do |format|

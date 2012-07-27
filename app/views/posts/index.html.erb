@@ -15,6 +15,7 @@
           </div>
           <% count = post.children.size -%>          
           <div class="postMore">全文<%= post.content.length %>字<% if count > 0 -%>&nbsp;&nbsp;&nbsp;&nbsp;<%= count %>条评论<% end -%></div>
+          <%= delete_by(post) %>
         </div><br clear="all" />
       </div>
     <% end -%>
