@@ -5,6 +5,7 @@ class TagsController < ApplicationController
     tagname = params[:id].present? ? params[:id].downcase : ""
     @tag = Tag.find(:first, :conditions => ["LOWER(name) like ?", tagname]) || raise(ActiveRecord::RecordNotFound, "Couldn't find tag #{tagname}")
     @related_tags = Tag.related_tags(@tag.id)
+    @related_users = @tag.post_users.limit(10)
 
     username = params[:user_id].present? ? params[:user_id].downcase : ""
     unless username.blank?
