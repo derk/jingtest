@@ -2,7 +2,7 @@ class Post < ActiveRecord::Base
   #acts_as_taggable_on :content
 
   belongs_to :user, :counter_cache => true, :touch => true
-  has_one :shadow, :dependent => :destroy, :autosave => true
+  has_one :shadow, :autosave => true
   belongs_to :parent, :class_name => "Post", :foreign_key => :parent_id
   has_many :children, :class_name => "Post", :foreign_key => :parent_id, :order => "created_at DESC"
   
