@@ -10,9 +10,9 @@
         </div>
       </div><!-- end info -->
       <div id="post_detail" class="postDetail">
-        <h2><%= raw(recognize_stamps_as_links(truncate(h(@post.content.force_encoding('utf-8')), {:length => 46, :omission => ''}))) %></h2>
+        <h2><%= raw(recognize_stamps_as_links(truncate(h(@post.content.force_encoding('utf-8')), {:length => 46, :omission => ''}), :user => @post.user)) %></h2>
         <div class="postDesc">
-          <%= simple_format(raw(recognize_stamps_as_links(string_from(h(@post.content.force_encoding('utf-8')), :length => 46, :omission => ''))), {}, :sanitize => false) %>
+          <%= simple_format(raw(recognize_stamps_as_links(string_from(h(@post.content.force_encoding('utf-8')), :length => 46, :omission => ''), :user => @post.user)), {}, :sanitize => false) %>
         </div>
       </div>
    </div>

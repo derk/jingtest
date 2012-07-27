@@ -5,9 +5,9 @@
           <div class="datetime"><%= standard_date_text(post.created_at) %></div>
         </div>
         <div class="postDetail">
-          <h2><%= link_to raw(recognize_stamps_as_links(truncate(h(post.content.force_encoding('utf-8')), {:length => 46, :omission => ''}))), post_url(post) %></h2>
+          <h2><%= link_to raw(recognize_stamps_as_links(truncate(h(post.content.force_encoding('utf-8')), {:length => 46, :omission => ''}), :user => post.user)), post_url(post) %></h2>
           <div class="postDesc">
-            <%= raw truncate(recognize_stamps_as_links(string_from(h(post.content.force_encoding('utf-8')), :length => 46, :omission => '')), :length => 320, :separator => ' ' || ',' || '，') %>
+            <%= raw truncate(recognize_stamps_as_links(string_from(h(post.content.force_encoding('utf-8')), :length => 46, :omission => ''), :user => post.user), :length => 320, :separator => ' ' || ',' || '，') %>
           </div>
           <% count = post.children.size -%>          
           <div class="postMore">全文<%= post.content.length %>字<% if count > 0 -%>&nbsp;&nbsp;&nbsp;&nbsp;<%= count %>条评论<% end -%></div>
