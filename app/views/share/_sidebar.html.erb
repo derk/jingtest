@@ -2,15 +2,17 @@
   <div class="userInfo">
     <%= link_to image_tag("usericon#{rand(12)}-120.png", :alt=> h(@user.name)), profile_url(@user) %>
     <h5><%=link_to h(@user.name), profile_url(@user) %></h5>
+    <div class="followSwitch">
     <% if user_signed_in? && current_user != @user -%>
       <div id="follow">
       	<% if current_user.following?(@user) -%>
-          <%= link_to "取消关注", unfollow_url(@user), :method => :delete, :remote => true -%>
+          <%= link_to "取消关注", unfollow_url(@user), :class=>"unfollow", :method => :delete, :remote => true -%>
       	<% else -%>
-          <%= link_to "关注", follow_url(@user), :method => :post, :remote => true -%>
+          <%= link_to "关注", follow_url(@user), :class=>"follow", :method => :post, :remote => true -%>
       	<% end -%>
       </div>
     <% end -%>
+    </div>
   </div>
             
   <div class="tagList">
