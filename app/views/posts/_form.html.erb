@@ -11,11 +11,15 @@
     </div>
   <% end %>
 
-  <div class="contents">
-    <%= f.text_area :content, :size => "30x5" %>
-  </div>
-  <%= f.submit %>
-  <div class="actions">
-    <%#= f.submit %>
-  </div>
+   
+        <div class="pEditText"><%= f.text_area :content %></div>
+
+        <div class="submits">
+          <%= f.submit :class=>"pSave" %>
+          <%= link_to "取消", @post :class=>"pCancel" %>
+         </div>
+
 <% end %>
+
+
+

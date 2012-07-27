@@ -1,6 +1,17 @@
-<h1>Editing post</h1>
 
-<%= render 'form' %>
 
-<%= link_to 'Show', @post %> |
-<%= link_to 'Back', posts_path %>
+  <div class="main">
+    <div class="postEntry">
+      <div class="postInfo">
+        &nbsp;
+      </div>
+
+      <div class="postEditForm">
+        <%= render 'form' %>
+        <br clear="all" />
+        <%= link_to 'Show', @post %> |
+        <%= link_to 'Back', posts_path %>
+      </div>
+    </div>
+  </div>
+  <div class="sidebar">&nbsp;</div>
