@@ -8,22 +8,11 @@
           <span class="space">|</span>
           <%= link_to '删除', @post, method: :delete, data: { confirm: 'Are you sure?' } %>
         </div>
-      </div>
+      </div><!-- end info -->
       <div id="post_detail" class="postDetail">
         <h2><%= raw(recognize_stamps_as_links(truncate(h(@post.content.force_encoding('utf-8')), {:length => 46, :omission => ''}))) %></h2>
         <div class="postDesc">
           <%= simple_format(raw(recognize_stamps_as_links(string_from(h(@post.content.force_encoding('utf-8')), :length => 46, :omission => ''))), {}, :sanitize => false) %>
-        </div>
-      </div>
-      <div id="post_edit_form" class="postEditForm" style="display:none;">
-        <div class="pEditText"><textarea>1992年创办新范式（New Paradigm）智库 ，不断地写书，追踪最新网络技术对商业，教育，科研等社会各方面的影响。他在这次TEDGlobal上说社会化媒体已经进化到社会化生产。
-                    
-没有任何一个国家能承受教育质量窳劣和社会不平等加深的后果。那么许多人都会问："到底是要教育质量优良和社会不平等好，还是要教育质量平庸和社会平等好呢？" 安德烈亚斯·施莱克尔在#TEDGlobal 2012 谈用数据来构建更好的教育体系 http://t.cn/zWyjzSZ时留言给自己...
-
-《维基经济学》的结论源自900万美元的研究项目，素有"数字经济之父"美誉的新经济学家唐·泰普斯科特向我们展示了个体力量的上升是如何改变商业社会的传统规则，这种利用大规模协作生产产品和提供服务的新方式，正颠覆我们对于传统知识创造模式的认识。</textarea></div>
-        <div class="submits">
-          <input type="submit" value="保存" class="pSave" onclick="document.getElementById('post_edit_form').style.display='none';document.getElementById('post_detail').style.display='block';document.getElementById('post_actions').style.display='block';" />
-          <input type="submit" value="取消" class="pCancel"onclick="document.getElementById('post_edit_form').style.display='none';document.getElementById('post_detail').style.display='block';document.getElementById('post_actions').style.display='block';" />
         </div>
       </div>
    </div>
@@ -52,6 +41,7 @@
           <p><%= simple_format(raw(recognize_stamps_as_links(h(post.content))), {}, :sanitize => false) %> </p>
         </div>
       <% end %>
+    </div>
 
     <div class="commentBox">
       <%= form_for(Post.new) do |f| %>
@@ -69,11 +59,9 @@
         <%= f.hidden_field :parent_id, {:value => @post.id} %>
         <div class="cText"><%= f.text_area :content %></div>
         <div class="tips">一则留言同时发布在你的主页作为一则随想</div>
-        <%#= f.submit "完成", :class=>"done" %>
-        <%= f.submit "完成" %>
+        <%= f.submit "完成", :class=>"done" %>
         <br clear="all" />
       <% end %>
-    </div>
     </div>
   </div>
 
