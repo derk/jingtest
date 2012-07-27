@@ -10,10 +10,11 @@
         </div>
       </div><!-- end info -->
       <div id="post_detail" class="postDetail">
-        <h2><%= raw(recognize_stamps_as_links(truncate(h(@post.content.force_encoding('utf-8')), {:length => 46, :omission => ''}), :user => @post.user)) %></h2>
-        <div class="postDesc">
-          <%= simple_format(raw(recognize_stamps_as_links(string_from(h(@post.content.force_encoding('utf-8')), :length => 46, :omission => ''), :user => @post.user)), {}, :sanitize => false) %>
-        </div>
+	<h2><%= link_to truncate(h(@post.content.force_encoding('utf-8')), {:length => 46, :omission => ''}), post_url(@post) %></h2>
+          <div class="postDesc">
+            <%= simple_format(raw(string_from(h(@post.content.force_encoding('utf-8')), :length => 46, :omission => '')), {}, :sanitize => false) %>
+            <%= recognize_stamps_as_links(@post.content.force_encoding('utf-8'), :user => @post.user) %>
+          </div>
       </div>
    </div>
 
@@ -40,7 +41,6 @@
           </div>
           <p>
             <%= simple_format(raw(h(post.content.force_encoding('utf-8'))), {}, :sanitize => false) %>
-            <br />
             <%= recognize_stamps_as_links(post.content.force_encoding('utf-8'), :user => post.user) %>
           </p>
         </div>
