@@ -13,11 +13,13 @@ module ApplicationHelper
   end
 
   def recognize_stamps_as_links(content, options={})
+    tags = []
     unless options[:user].nil?
-      content.gsub(/#[A-Z0-9a-z\-\_]+/){|stamp| link_to stamp, tag_by_user_url(stamp[1,stamp.length], options[:user]), :class => 'green'}
+      content.gsub(/#[A-Z0-9a-z\-\_]+/){|stamp| tags << link_to(stamp, tag_by_user_url(stamp[1,stamp.length], options[:user]), :class => 'green') }
     else
-      content.gsub(/#[A-Z0-9a-z\-\_]+/){|stamp| link_to stamp, tag_url(stamp[1,stamp.length]), :class => 'green'}      
+      content.gsub(/#[A-Z0-9a-z\-\_]+/){|stamp| tags << link_to(stamp, tag_url(stamp[1,stamp.length]), :class => 'green') }      
     end
+    return tags.join(' ').html_safe
   end
 
   def string_from(text, options = {})

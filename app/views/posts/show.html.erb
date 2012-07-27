@@ -38,7 +38,11 @@
               <span class="datetime"><%= standard_date_text(post.created_at) %></span>
             </div><br clear="all" />
           </div>
-          <p><%= simple_format(raw(recognize_stamps_as_links(h(post.content))), {}, :sanitize => false) %> </p>
+          <p>
+            <%= simple_format(raw(h(post.content.force_encoding('utf-8'))), {}, :sanitize => false) %>
+            <br />
+            <%= recognize_stamps_as_links(post.content.force_encoding('utf-8'), :user => post.user) %>
+          </p>
         </div>
       <% end %>
     </div>
